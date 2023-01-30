@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(fontSize: 25),
             ),
             Text(
-              '$_counter',
+              'Total count: $_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
