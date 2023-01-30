@@ -95,6 +95,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(
+              'This is sample text Rumit',
+              style: Theme.of(context).textTheme.headline4,
+            ),
             const Padding(
               padding: EdgeInsets.all(12.0),
               child: Text(
@@ -106,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+
           ],
         ),
       ),
