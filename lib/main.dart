@@ -95,14 +95,22 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times below:',
-              style: TextStyle(fontSize: 30),
+            Text(
+              'This is sample text Rumit',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Text(
+                'You have pushed the button this many times below:',
+                style: TextStyle(fontSize: 30),
+              ),
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+
           ],
         ),
       ),
