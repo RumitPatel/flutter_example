@@ -95,9 +95,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: const Text(
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
                 'You have pushed the button this many times below:',
                 style: TextStyle(fontSize: 30),
               ),
