@@ -100,8 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(
                   backgroundColor: Colors.blue,
                   fontSize: 30,
-                color: Colors.pink
-              ),
+                  color: Colors.pink),
             ),
             const Padding(
               padding: EdgeInsets.all(12.0),
