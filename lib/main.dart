@@ -53,7 +53,6 @@ class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
 }
 
-
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
