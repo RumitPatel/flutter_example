@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'This is sample text Rumit',
-              style: TextStyle(backgroundColor: Colors.blue),
+              style: TextStyle(backgroundColor: Colors.blue, fontSize: 30),
             ),
             const Padding(
               padding: EdgeInsets.all(12.0),
