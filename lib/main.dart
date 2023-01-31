@@ -97,7 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'This is sample text Rumit',
-              style: TextStyle(backgroundColor: Colors.blue, fontSize: 30),
+              style: TextStyle(
+                  backgroundColor: Colors.blue,
+                  fontSize: 30,
+                color: Colors.pink
+              ),
             ),
             const Padding(
               padding: EdgeInsets.all(12.0),
@@ -110,7 +114,6 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-
           ],
         ),
       ),
