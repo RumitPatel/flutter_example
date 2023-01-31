@@ -1,5 +1,4 @@
 # android_flutter_examle
 The example is in under development.
-This demonstrates the basic page.
+This demonstrates the basic page build in flutter.
 I am following the tutorial: [ Building your first Flutter app](https://youtu.be/Z6KZ3cTGBWw), and [this codelab.](https://codelabs.developers.google.com/codelabs/flutter-codelab-first#0)
-
