@@ -49,12 +49,13 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class MyAppState extends ChangeNotifier {
+/*class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
-}
+}*/
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String randomName = '';
 
   void _incrementCounter() {
     setState(() {
@@ -64,12 +65,13 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      randomName = WordPair.random().toString();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
+    // var appState = context.watch<MyAppState>();
 
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -107,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'This is sample text Rumit',
               style: TextStyle(
                   backgroundColor: Colors.blue,
-                  fontSize: 30,
+                  fontSize: 40,
                   color: Colors.pink),
             ),
             const Padding(
@@ -119,16 +121,20 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline2,
             ),
-            Text(appState.current.asLowerCase),
+            Text(
+              'Random name: $randomName',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            // Text(appState.current.asLowerCase),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.refresh),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
