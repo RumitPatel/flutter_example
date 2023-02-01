@@ -123,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             // Text(appState.current.asLowerCase),
             Text(
-                'Random words:\n${WordPair.random().asLowerCase}',
+              'Random words:\n${WordPair.random().asLowerCase}',
               style: TextStyle(fontSize: 30),
             ),
           ],
