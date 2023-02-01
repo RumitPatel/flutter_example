@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'This is sample text Rumit',
               style: TextStyle(
                   backgroundColor: Colors.blue,
-                  fontSize: 30,
+                  fontSize: 40,
                   color: Colors.pink),
             ),
             const Padding(
