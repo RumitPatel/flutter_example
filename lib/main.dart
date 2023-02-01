@@ -126,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // Text(appState.current.asLowerCase),
             Text(
               'Random words:\n$randomName',
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
           ],
         ),
