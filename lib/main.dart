@@ -55,6 +55,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String randomName = '';
 
   void _incrementCounter() {
     setState(() {
@@ -64,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      randomName = WordPair.random().toString();
     });
   }
 
@@ -123,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             // Text(appState.current.asLowerCase),
             Text(
-              'Random words:\n${WordPair.random().asLowerCase}',
+              'Random words:\n$randomName',
               style: TextStyle(fontSize: 30),
             ),
           ],
