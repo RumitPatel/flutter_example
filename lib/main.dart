@@ -123,11 +123,11 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline2,
             ),
-            // Text(appState.current.asLowerCase),
             Text(
               'Random name: $randomName',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
+            // Text(appState.current.asLowerCase),
           ],
         ),
       ),
