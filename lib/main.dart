@@ -129,6 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'Random name: $randomName and $randomName2',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
+            RandomWords()
             // Text(appState.current.asLowerCase),
           ],
         ),
@@ -150,6 +151,7 @@ class RandomWords extends StatefulWidget {
 class _RandomWordsState extends State<RandomWords> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final workParir = WordPair.random();
+    return Text(workParir.asPascalCase);
   }
 }
