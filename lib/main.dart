@@ -71,6 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final randomName2 = WordPair.random().toString();
+
     // var appState = context.watch<MyAppState>();
 
     // This method is rerun every time setState is called, for instance as done
@@ -124,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline2,
             ),
             Text(
-              'Random name: $randomName',
+              'Random name: $randomName and $randomName2',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             // Text(appState.current.asLowerCase),
