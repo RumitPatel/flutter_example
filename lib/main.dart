@@ -165,36 +165,42 @@ class _RandomWordsState extends State<RandomWords> {
 /*    final workParir = WordPair.random();
     return Text(workParir.asPascalCase);*/
 
-  return Scaffold(
-    appBar: AppBar(
-      title: Text('Random name generator'),
-    ),
-    body: _buildSuggestions(),
-  );
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Random name generator'),
+      ),
+      body: _buildSuggestions(),
+    );
   }
 
   Widget _buildSuggestions() {
     return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemBuilder: (BuildContext _context, int i){
-        if(i.isOdd) {
-          return Divider();
-        }
+        padding: const EdgeInsets.all(16),
+        itemBuilder: (BuildContext _context, int i) {
+          if (i.isOdd) {
+            return Divider();
+          }
 
-        final int index  = i ~/ 2;
-        if(index >= _suggestions.length) {
-          _suggestions.addAll(generateWordPairs().take(10));
-        }
-        return _buildRow(_suggestions[index]);
-      }
-    );
+          final int index = i ~/ 2;
+          if (index >= _suggestions.length) {
+            _suggestions.addAll(generateWordPairs().take(10));
+          }
+          return _buildRow(_suggestions[index]);
+        });
   }
 
   Widget _buildRow(WordPair pair) {
     return ListTile(
-      title: Text(
+      /*title: Text(
         pair.asPascalCase,
         style: _biggerFont,
+      ),*/
+      title: Transform.rotate(
+        angle: 0.3,
+        child: Text(
+          pair.asPascalCase,
+          style: _biggerFont,
+        ),
       ),
     );
   }
