@@ -196,11 +196,13 @@ class _RandomWordsState extends State<RandomWords> {
         style: _biggerFont,
       ),*/
       title: Transform.rotate(
-        angle: 0.3,
-        child: Text(
-          pair.asPascalCase,
-          style: _biggerFont,
-        ),
+        angle: 0.1,
+        child: Column(
+          children: const <Widget>[
+            Text('Deliver features faster'),
+            Text('Craft beautiful UIs'),
+          ],
+        )
       ),
     );
   }
