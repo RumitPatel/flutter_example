@@ -199,8 +199,8 @@ class _RandomWordsState extends State<RandomWords> {
         angle: 0.1,
         child: Column(
           children: const <Widget>[
-            Text('Deliver features faster'),
-            Text('Craft beautiful UIs'),
+            Text('List item title'),
+            Text('List item description'),
           ],
         )
       ),
