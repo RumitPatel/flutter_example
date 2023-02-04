@@ -60,11 +60,15 @@ class MyHomePage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            ElevatedButton(
-                onPressed: () {
-                  appState.getNext();
-                },
-                child: Text('Next Word'))
+            Row(
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      appState.getNext();
+                    },
+                    child: Text('Next Word')),
+              ],
+            )
           ],
         ),
       ),
