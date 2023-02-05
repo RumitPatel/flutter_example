@@ -43,6 +43,14 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void removeFavorite(WordPair value) {
+    if (favourites.contains(value)) {
+      favourites.remove(value);
+    }
+
+    notifyListeners();
+  }
 }
 
 class MyHomePage extends StatefulWidget {
@@ -61,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = GeneratorPage();
         break;
       case 1:
-        page = const Placeholder();
+        page = Favourite();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -102,6 +110,36 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       );
     });
+  }
+}
+
+class Favourite extends StatelessWidget {
+  const Favourite({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+    var favourites = appState.favourites;
+
+    return Column(
+      children: [
+        for (var favourite in favourites)
+          Row(
+            children: [
+              ElevatedButton.icon(
+                  onPressed:() {
+
+                  },
+                  icon: Icon(Icons.delete),
+                  label: Text('Remove')
+              ),
+              Text(favourite.asPascalCase),
+            ],
+          ),
+      ],
+    );
   }
 }
 
