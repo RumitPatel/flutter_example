@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = GeneratorPage();
         break;
       case 1:
-        page = Favourite();
+        page = FavoritesPage();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -113,8 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class Favourite extends StatelessWidget {
-  const Favourite({
+class FavoritesPage extends StatelessWidget {
+  const FavoritesPage({
     Key? key,
   }) : super(key: key);
 
@@ -123,18 +123,40 @@ class Favourite extends StatelessWidget {
     var appState = context.watch<MyAppState>();
     var favourites = appState.favourites;
 
+    if(favourites.isEmpty) {
+      return Center(
+        child: Text('No Favourite found!!!'),
+      );
+    }
+
+    return ListView(
+      children: [
+        Padding(
+            padding: const EdgeInsets.all(8),
+          child: Text('You have ${appState.favourites.length} favorite'),
+        ),
+        for(var pair in favourites)
+          ListTile(
+            leading: IconButton(
+                icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
+                onPressed: (){
+                  appState.removeFavorite(pair);
+                },
+            ),
+            title: Text(pair.asPascalCase),
+          ),
+      ],
+    );
+
     return Column(
       children: [
         for (var favourite in favourites)
           Row(
             children: [
               ElevatedButton.icon(
-                  onPressed:() {
-
-                  },
+                  onPressed: () {},
                   icon: Icon(Icons.delete),
-                  label: Text('Remove')
-              ),
+                  label: Text('Remove')),
               Text(favourite.asPascalCase),
             ],
           ),
