@@ -123,7 +123,7 @@ class FavoritesPage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
     var favourites = appState.favourites;
 
-    if(favourites.isEmpty) {
+    if (favourites.isEmpty) {
       return Center(
         child: Text('No Favourite found!!!'),
       );
@@ -132,16 +132,16 @@ class FavoritesPage extends StatelessWidget {
     return ListView(
       children: [
         Padding(
-            padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: Text('You have ${appState.favourites.length} favorite'),
         ),
-        for(var pair in favourites)
+        for (var pair in favourites)
           ListTile(
             leading: IconButton(
-                icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
-                onPressed: (){
-                  appState.removeFavorite(pair);
-                },
+              icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
+              onPressed: () {
+                appState.removeFavorite(pair);
+              },
             ),
             title: Text(pair.asPascalCase),
           ),
