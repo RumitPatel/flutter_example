@@ -147,21 +147,6 @@ class FavoritesPage extends StatelessWidget {
           ),
       ],
     );
-
-    return Column(
-      children: [
-        for (var favourite in favourites)
-          Row(
-            children: [
-              ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.delete),
-                  label: Text('Remove')),
-              Text(favourite.asPascalCase),
-            ],
-          ),
-      ],
-    );
   }
 }
 
