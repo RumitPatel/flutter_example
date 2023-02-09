@@ -290,7 +290,7 @@ class _HistoryListViewState extends State<HistoryListView> {
                   appState.toggleFavorite(pair);
                 },
                 icon: appState.favourites.contains(pair)
-                    ? Icon(Icons.favorite, size: 12)
+                    ? const Icon(Icons.favorite, size: 12)
                     : const SizedBox(),
                 label: Text(
                   pair.asLowerCase,
