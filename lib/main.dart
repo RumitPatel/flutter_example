@@ -291,7 +291,7 @@ class _HistoryListViewState extends State<HistoryListView> {
                 },
                 icon: appState.favourites.contains(pair)
                     ? Icon(Icons.favorite, size: 12)
-                    : SizedBox(),
+                    : const SizedBox(),
                 label: Text(
                   pair.asLowerCase,
                   semanticsLabel: pair.asPascalCase,
