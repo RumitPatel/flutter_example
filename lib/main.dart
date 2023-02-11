@@ -305,3 +305,12 @@ class _HistoryListViewState extends State<HistoryListView> {
     );
   }
 }
+
+class LoginPageTest extends StatelessWidget {
+  const LoginPageTest({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
