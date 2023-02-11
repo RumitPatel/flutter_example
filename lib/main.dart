@@ -88,6 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         page = FavoritesPage();
         break;
+      case 2:
+        page = LoginPageTest();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -107,6 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   NavigationRailDestination(
                     icon: Icon(Icons.favorite),
                     label: Text('Favorites'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.login),
+                    label: Text('Login Page'),
                   ),
                 ],
                 selectedIndex: selectedIndex,
