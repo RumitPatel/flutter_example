@@ -329,7 +329,7 @@ class LoginPageTest extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: Colors.tealAccent,
-              borderRadius:  BorderRadius.circular(32),
+              borderRadius:  BorderRadius.circular(15),
             ),
             child: TextField(
               decoration: InputDecoration(
