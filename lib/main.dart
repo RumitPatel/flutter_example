@@ -333,7 +333,7 @@ class LoginPageTest extends StatelessWidget {
             ),
             child: TextField(
               decoration: InputDecoration(
-                hintStyle: TextStyle(fontSize: 17),
+                hintStyle: TextStyle(fontSize: 18),
                 hintText: 'Search your trips',
                 suffixIcon: Icon(Icons.search),
                 border: InputBorder.none,
