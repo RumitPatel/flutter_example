@@ -1,3 +1,4 @@
+import 'package:android_flutter_examle/utilities/constants.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -333,7 +334,7 @@ class LoginPageTest extends StatelessWidget {
             ),
             child: TextField(
               decoration: InputDecoration(
-                hintStyle: TextStyle(fontSize: 18),
+                hintStyle: TextStyle(fontSize: textSizeNormal),
                 hintText: 'Search your trips',
                 suffixIcon: Icon(Icons.search),
                 border: InputBorder.none,
