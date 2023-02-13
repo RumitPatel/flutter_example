@@ -323,9 +323,20 @@ class LoginPageTest extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TextField(
-            decoration: new InputDecoration.collapsed(
-                hintText: 'Please enter email here'),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.tealAccent,
+              borderRadius: BorderRadius.circular(inputRadios),
+            ),
+            child: TextField(
+              decoration: InputDecoration(
+                hintStyle: TextStyle(fontSize: textSizeNormal),
+                hintText: 'Enter password here',
+                prefixIcon: Icon(Icons.email),
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.all(inputContentPadding),
+              ),
+            ),
           ),
           Container(
             decoration: BoxDecoration(
@@ -335,8 +346,9 @@ class LoginPageTest extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintStyle: TextStyle(fontSize: textSizeNormal),
-                hintText: 'Search your trips',
-                suffixIcon: Icon(Icons.search),
+                hintText: 'Search your password here',
+                suffixIcon: Icon(Icons.remove_red_eye),
+                prefixIcon: Icon(Icons.password),
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.all(inputContentPadding),
               ),
