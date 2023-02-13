@@ -326,10 +326,19 @@ class LoginPageTest extends StatelessWidget {
             decoration: new InputDecoration.collapsed(
                 hintText: 'Please enter email here'),
           ),
-          TextField(
-            decoration: new InputDecoration(
-              border: InputBorder.none,
-              hintText: 'Enter Password here',
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.tealAccent,
+              borderRadius:  BorderRadius.circular(32),
+            ),
+            child: TextField(
+              decoration: InputDecoration(
+                hintStyle: TextStyle(fontSize: 17),
+                hintText: 'Search your trips',
+                suffixIcon: Icon(Icons.search),
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.all(20),
+              ),
             ),
           ),
         ],
