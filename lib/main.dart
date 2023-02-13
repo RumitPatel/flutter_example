@@ -1,3 +1,4 @@
+import 'package:android_flutter_examle/utilities/constants.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -318,6 +319,48 @@ class LoginPageTest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.tealAccent,
+              borderRadius: BorderRadius.circular(inputRadios),
+            ),
+            child: TextField(
+              decoration: InputDecoration(
+                hintStyle: TextStyle(fontSize: textSizeNormal),
+                hintText: 'Enter password here',
+                prefixIcon: Icon(Icons.email),
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.all(inputContentPadding),
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.tealAccent,
+              borderRadius: BorderRadius.circular(inputRadios),
+            ),
+            child: TextField(
+              decoration: InputDecoration(
+                hintStyle: TextStyle(fontSize: textSizeNormal),
+                hintText: 'Search your password here',
+                suffixIcon: Icon(Icons.remove_red_eye),
+                prefixIcon: Icon(Icons.password),
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.all(inputContentPadding),
+              ),
+            ),
+          ),
+          ElevatedButton.icon(
+            onPressed: () {},
+            icon: Icon(Icons.login),
+            label: Text('Login'),
+          )
+        ],
+      ),
+    );
   }
 }
