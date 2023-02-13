@@ -330,7 +330,7 @@ class LoginPageTest extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: Colors.tealAccent,
-              borderRadius:  BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(inputRadios),
             ),
             child: TextField(
               decoration: InputDecoration(
@@ -338,7 +338,7 @@ class LoginPageTest extends StatelessWidget {
                 hintText: 'Search your trips',
                 suffixIcon: Icon(Icons.search),
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.all(20),
+                contentPadding: EdgeInsets.all(inputContentPadding),
               ),
             ),
           ),
