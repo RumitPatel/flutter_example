@@ -320,6 +320,7 @@ class LoginPageTest extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Text 1'),
           Text('Text 2')
