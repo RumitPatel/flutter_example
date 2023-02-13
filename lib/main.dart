@@ -318,6 +318,13 @@ class LoginPageTest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return Center(
+      child: Column(
+        children: [
+          Text('Text 1'),
+          Text('Text 2')
+        ],
+      ),
+    );
   }
 }
