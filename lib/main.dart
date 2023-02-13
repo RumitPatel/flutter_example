@@ -355,10 +355,10 @@ class LoginPageTest extends StatelessWidget {
             ),
           ),
           ElevatedButton.icon(
-              onPressed: () {},
-              icon: Icon(Icons.login),
-              label: Text('Click here'),
-              )
+            onPressed: () {},
+            icon: Icon(Icons.login),
+            label: Text('Login'),
+          )
         ],
       ),
     );
