@@ -322,7 +322,11 @@ class LoginPageTest extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Text 1'),
+          TextField(
+            decoration: new InputDecoration.collapsed(
+                hintText: 'Please enter email here'
+            ),
+          ),
           Text('Text 2')
         ],
       ),
