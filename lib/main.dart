@@ -1,3 +1,4 @@
+import 'package:android_flutter_examle/screens/SecondRoute.dart';
 import 'package:android_flutter_examle/utilities/constants.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
@@ -365,27 +366,6 @@ class LoginPageTest extends StatelessWidget {
             label: Text('Login'),
           )
         ],
-      ),
-    );
-  }
-}
-
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Second Route'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Go back!'),
-        ),
       ),
     );
   }
