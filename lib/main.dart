@@ -1,3 +1,4 @@
+import 'package:android_flutter_examle/screens/MainRoute.dart';
 import 'package:android_flutter_examle/screens/SecondRoute.dart';
 import 'package:android_flutter_examle/utilities/constants.dart';
 import 'package:english_words/english_words.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
         ),
-        home: MyHomePage(),
+        // home: MyHomePage(),
+        home: MainRoute(),
       ),
     );
   }
@@ -70,6 +72,8 @@ class MyAppState extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  var mainItems = <String>['List Item One', 'List Item One'];
 }
 
 class MyHomePage extends StatefulWidget {
