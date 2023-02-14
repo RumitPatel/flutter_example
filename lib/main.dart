@@ -1,3 +1,4 @@
+import 'package:android_flutter_examle/screens/SecondRoute.dart';
 import 'package:android_flutter_examle/utilities/constants.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
         ),
         home: MyHomePage(),
+        // home: MainRoute(),
       ),
     );
   }
@@ -69,6 +71,8 @@ class MyAppState extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  var mainItems = <String>['List Item One', 'List Item One'];
 }
 
 class MyHomePage extends StatefulWidget {
@@ -355,7 +359,12 @@ class LoginPageTest extends StatelessWidget {
             ),
           ),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SecondRoute()),
+              );
+            },
             icon: Icon(Icons.login),
             label: Text('Login'),
           )
