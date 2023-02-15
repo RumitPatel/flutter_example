@@ -40,9 +40,10 @@ class MainRoute extends StatelessWidget {
             for (var mainItem in mainItems)
               ListTile(
                 leading: IconButton(
-                  icon: Icon(Icons.arrow_forward, semanticLabel: 'Delete'),
+                  icon: Icon(Icons.arrow_forward, semanticLabel: 'Selection arrow'),
                   onPressed: () {
                     // appState.removeFavorite(pair);
+
                   },
                 ),
                 title: Text(mainItem),
