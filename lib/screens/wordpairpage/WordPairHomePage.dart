@@ -33,6 +33,9 @@ class _WordPairHomePageState extends State<WordPairHomePage> {
 
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
+        appBar: AppBar(
+          title: const Text('Word Pair Page'),
+        ),
         body: Row(
           children: [
             SafeArea(
