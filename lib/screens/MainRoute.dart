@@ -44,7 +44,10 @@ class MainRoute extends StatelessWidget {
                   onPressed: () {
                     // appState.removeFavorite(pair);
                     if(mainItem == 'List Item One') {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyHomePage()),
+                      );
                     } else if(mainItem == 'List Item Two') {
 
                     }
