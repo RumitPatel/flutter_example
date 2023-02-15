@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../main.dart';
+import 'SecondRoute.dart';
 
 class MainRoute extends StatelessWidget {
   const MainRoute({super.key});
@@ -49,7 +50,10 @@ class MainRoute extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => MyHomePage()),
                       );
                     } else if(mainItem == 'List Item Two') {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SecondRoute()),
+                      );
                     }
                   },
                 ),
