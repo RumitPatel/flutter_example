@@ -23,15 +23,17 @@ class MainRoute extends StatelessWidget {
             for (var mainItem in mainItems)
               ListTile(
                 leading: IconButton(
-                  icon: Icon(Icons.arrow_forward, semanticLabel: 'Selection arrow'),
+                  icon: Icon(Icons.arrow_forward,
+                      semanticLabel: 'Selection arrow'),
                   onPressed: () {
                     // appState.removeFavorite(pair);
-                    if(mainItem == 'List Item One') {
+                    if (mainItem == 'List Item One') {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => WordPairHomePage()),
+                        MaterialPageRoute(
+                            builder: (context) => WordPairHomePage()),
                       );
-                    } else if(mainItem == 'List Item Two') {
+                    } else if (mainItem == 'List Item Two') {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => SecondRoute()),
