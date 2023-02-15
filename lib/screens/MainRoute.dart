@@ -1,4 +1,4 @@
-import 'package:android_flutter_examle/screens/WorkPairHomePage.dart';
+import 'package:android_flutter_examle/screens/WordPairHomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +48,7 @@ class MainRoute extends StatelessWidget {
                     if(mainItem == 'List Item One') {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => WorkPairHomePage()),
+                        MaterialPageRoute(builder: (context) => WordPairHomePage()),
                       );
                     } else if(mainItem == 'List Item Two') {
                       Navigator.push(
