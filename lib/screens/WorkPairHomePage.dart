@@ -6,12 +6,12 @@ import '../main.dart';
 import '../utilities/constants.dart';
 import 'SecondRoute.dart';
 
-class MyHomePage extends StatefulWidget {
+class WorkPairHomePage extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<WorkPairHomePage> createState() => _WorkPairHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _WorkPairHomePageState extends State<WorkPairHomePage> {
   var selectedIndex = 0;
 
   @override
