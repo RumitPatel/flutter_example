@@ -43,7 +43,11 @@ class MainRoute extends StatelessWidget {
                   icon: Icon(Icons.arrow_forward, semanticLabel: 'Selection arrow'),
                   onPressed: () {
                     // appState.removeFavorite(pair);
+                    if(mainItem == '') {
 
+                    } else if(mainItem == '') {
+
+                    }
                   },
                 ),
                 title: Text(mainItem),
