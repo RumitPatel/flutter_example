@@ -43,7 +43,7 @@ class MainRoute extends StatelessWidget {
                     }
                   },
                 ),
-                title: Text('mainItem.name'),
+                title: Text(mainItem),
               ),
           ],
         ),
