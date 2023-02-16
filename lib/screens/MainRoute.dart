@@ -13,6 +13,8 @@ class MainRoute extends StatelessWidget {
     var appState = context.watch<MyAppState>();
     var mainItems = appState.mainItems;
 
+    var mainItems2 = <String>['List Item One', 'List Item Two'];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Main Screen'),
@@ -20,7 +22,7 @@ class MainRoute extends StatelessWidget {
       body: Center(
         child: ListView(
           children: [
-            for (var mainItem in mainItems)
+            for (var mainItem in mainItems2)
               ListTile(
                 leading: IconButton(
                   icon: Icon(Icons.arrow_forward,
