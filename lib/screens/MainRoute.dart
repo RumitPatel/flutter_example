@@ -11,9 +11,6 @@ class MainRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    var mainItems = appState.mainItems;
-
     var mainItems2 = <String>[mainItem1Text, mainItem2Text];
 
     return Scaffold(
