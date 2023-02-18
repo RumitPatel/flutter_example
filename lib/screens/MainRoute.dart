@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../main.dart';
+import '../utilities/constants.dart';
 import 'SecondRoute.dart';
 
 class MainRoute extends StatelessWidget {
@@ -13,7 +14,7 @@ class MainRoute extends StatelessWidget {
     var appState = context.watch<MyAppState>();
     var mainItems = appState.mainItems;
 
-    var mainItems2 = <String>['List Item One', 'List Item Two'];
+    var mainItems2 = <String>[mainItem1Text, mainItem2Text];
 
     return Scaffold(
       appBar: AppBar(
@@ -29,13 +30,13 @@ class MainRoute extends StatelessWidget {
                       semanticLabel: 'Selection arrow'),
                   onPressed: () {
                     // appState.removeFavorite(pair);
-                    if (mainItem == 'List Item One') {
+                    if (mainItem == mainItem1Text) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => WordPairHomePage()),
                       );
-                    } else if (mainItem == 'List Item Two') {
+                    } else if (mainItem == mainItem2Text) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => SecondRoute()),
