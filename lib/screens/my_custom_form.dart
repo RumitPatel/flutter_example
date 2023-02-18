@@ -55,7 +55,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   if (_formKey.currentState!.validate()) {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
-                    showToast(context, 'Processing Data');
+                    showSnackBar(context, 'Processing Data');
                   }
                 },
                 child: const Text('Submit'),

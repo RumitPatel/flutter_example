@@ -1,9 +1,9 @@
-import 'package:android_flutter_examle/screens/MyCustomForm.dart';
+import 'package:android_flutter_examle/screens/my_custom_form.dart';
 import 'package:android_flutter_examle/screens/wordpairpage/WordPairHomePage.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
-import 'SecondRoute.dart';
+import 'second_route.dart';
 
 class MainRoute extends StatelessWidget {
   const MainRoute({super.key});

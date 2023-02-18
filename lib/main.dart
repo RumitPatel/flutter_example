@@ -1,4 +1,4 @@
-import 'package:android_flutter_examle/screens/MainRoute.dart';
+import 'package:android_flutter_examle/screens/main_route.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

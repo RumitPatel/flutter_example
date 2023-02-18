@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../main.dart';
 import '../../utilities/constants.dart';
-import '../SecondRoute.dart';
+import '../second_route.dart';
 
 class WordPairHomePage extends StatefulWidget {
   @override
