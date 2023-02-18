@@ -5,3 +5,7 @@ showSnackBar(BuildContext context, String message) {
     SnackBar(content: Text(message)),
   );
 }
+
+isValidEmail(String value) {
+  return !RegExp(r'\S+@\S+\.\S+').hasMatch(value);
+}

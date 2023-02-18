@@ -32,6 +32,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                 if (value == null || value.isEmpty) {
                   return msgIncorrectEmailError;
                 }
+                if (isValidEmail(value)) {
+                  return msgIncorrectEmailError;
+                }
                 return null;
               },
               decoration: const InputDecoration(
