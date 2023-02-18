@@ -25,7 +25,7 @@ class MainRoute extends StatelessWidget {
                   icon: Icon(Icons.arrow_forward,
                       semanticLabel: 'Selection arrow'),
                   onPressed: () {
-                    switch(mainItem){
+                    switch (mainItem) {
                       case mainItem1Text:
                         Navigator.push(
                           context,
@@ -36,13 +36,15 @@ class MainRoute extends StatelessWidget {
                       case mainItem2Text:
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SecondRoute()),
+                          MaterialPageRoute(
+                              builder: (context) => SecondRoute()),
                         );
                         break;
                       case mainItem3Text:
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => MyCustomForm()),
+                          MaterialPageRoute(
+                              builder: (context) => MyCustomForm()),
                         );
                         break;
                     }
