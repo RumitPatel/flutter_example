@@ -1,8 +1,6 @@
 import 'package:android_flutter_examle/screens/wordpairpage/WordPairHomePage.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../main.dart';
 import '../utilities/constants.dart';
 import 'SecondRoute.dart';
 
