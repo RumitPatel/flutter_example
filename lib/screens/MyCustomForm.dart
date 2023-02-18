@@ -1,4 +1,4 @@
-import 'package:android_flutter_examle/utilities/apputils.dart';
+import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
