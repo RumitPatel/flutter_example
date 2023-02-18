@@ -42,6 +42,21 @@ class MyCustomFormState extends State<MyCustomForm> {
                   contentPadding: EdgeInsets.only(
                       left: 15, bottom: 11, top: 11, right: 15)),
             ),
+            TextFormField(
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return msgIncorrectPasswordError;
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                  hintText: lblPasswordPlaceholder,
+                  contentPadding: EdgeInsets.only(
+                      left: 15, bottom: 11, top: 11, right: 15)),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(

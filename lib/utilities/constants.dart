@@ -9,6 +9,8 @@ const String mainItem3Text = "Form Page";
 const String formTitle = "Login form";
 const String lblEmailPlaceholder = "Enter your email address";
 const String msgIncorrectEmailError = "Please enter valid email address";
+const String lblPasswordPlaceholder = "Enter your password";
+const String msgIncorrectPasswordError = "Please enter valid password";
 
 const String lblSubmit = "Submit";
 
