@@ -1,4 +1,3 @@
-import 'package:android_flutter_examle/models/MainListItem.dart';
 import 'package:android_flutter_examle/screens/MainRoute.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +70,4 @@ class MyAppState extends ChangeNotifier {
 
     notifyListeners();
   }
-
-  var mainItems = <MainListItem>[MainListItem('1', 'List Item One'), MainListItem('2', 'List Item Two'),];
 }
