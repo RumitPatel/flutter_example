@@ -9,7 +9,7 @@ class MainRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mainItems2 = <String>[mainItem1Text, mainItem2Text, mainItem3Text];
+    var mainItems = <String>[mainItem1Text, mainItem2Text, mainItem3Text];
 
     return Scaffold(
       appBar: AppBar(
@@ -18,7 +18,7 @@ class MainRoute extends StatelessWidget {
       body: Center(
         child: ListView(
           children: [
-            for (var mainItem in mainItems2)
+            for (var mainItem in mainItems)
               ListTile(
                 leading: IconButton(
                   icon: Icon(Icons.arrow_forward,
