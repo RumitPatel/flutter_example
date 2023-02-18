@@ -1,3 +1,4 @@
+import 'package:android_flutter_examle/screens/MyCustomForm.dart';
 import 'package:android_flutter_examle/screens/wordpairpage/WordPairHomePage.dart';
 import 'package:flutter/material.dart';
 
@@ -24,18 +25,26 @@ class MainRoute extends StatelessWidget {
                   icon: Icon(Icons.arrow_forward,
                       semanticLabel: 'Selection arrow'),
                   onPressed: () {
-                    // appState.removeFavorite(pair);
-                    if (mainItem == mainItem1Text) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => WordPairHomePage()),
-                      );
-                    } else if (mainItem == mainItem2Text) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SecondRoute()),
-                      );
+                    switch(mainItem){
+                      case mainItem1Text:
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WordPairHomePage()),
+                        );
+                        break;
+                      case mainItem2Text:
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SecondRoute()),
+                        );
+                        break;
+                      case mainItem3Text:
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyCustomForm()),
+                        );
+                        break;
                     }
                   },
                 ),
