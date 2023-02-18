@@ -1,8 +1,8 @@
+import 'package:android_flutter_examle/screens/MyCustomForm.dart';
 import 'package:android_flutter_examle/screens/wordpairpage/WordPairHomePage.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../main.dart';
+import '../utilities/constants.dart';
 import 'SecondRoute.dart';
 
 class MainRoute extends StatelessWidget {
@@ -10,10 +10,7 @@ class MainRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    var mainItems = appState.mainItems;
-
-    var mainItems2 = <String>['List Item One', 'List Item Two'];
+    var mainItems = <String>[mainItem1Text, mainItem2Text, mainItem3Text];
 
     return Scaffold(
       appBar: AppBar(
@@ -22,24 +19,34 @@ class MainRoute extends StatelessWidget {
       body: Center(
         child: ListView(
           children: [
-            for (var mainItem in mainItems2)
+            for (var mainItem in mainItems)
               ListTile(
                 leading: IconButton(
                   icon: Icon(Icons.arrow_forward,
                       semanticLabel: 'Selection arrow'),
                   onPressed: () {
-                    // appState.removeFavorite(pair);
-                    if (mainItem == 'List Item One') {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => WordPairHomePage()),
-                      );
-                    } else if (mainItem == 'List Item Two') {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SecondRoute()),
-                      );
+                    switch (mainItem) {
+                      case mainItem1Text:
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WordPairHomePage()),
+                        );
+                        break;
+                      case mainItem2Text:
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SecondRoute()),
+                        );
+                        break;
+                      case mainItem3Text:
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyCustomForm()),
+                        );
+                        break;
                     }
                   },
                 ),
