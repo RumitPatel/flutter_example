@@ -34,7 +34,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
                 return null;
               },
-              decoration: new InputDecoration(
+              decoration: const InputDecoration(
                   hintText: lblEmailPlaceholder,
                   contentPadding: EdgeInsets.only(
                       left: 15, bottom: 11, top: 11, right: 15)),
@@ -43,10 +43,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Validate returns true if the form is valid, or false otherwise.
                   if (_formKey.currentState!.validate()) {
-                    // If the form is valid, display a snackbar. In the real world,
-                    // you'd often call a server or save the information in a database.
                     showSnackBar(context, tempTextProcessingData);
                   }
                 },
