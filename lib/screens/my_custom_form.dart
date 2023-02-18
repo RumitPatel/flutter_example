@@ -1,6 +1,7 @@
 import 'package:android_flutter_examle/utilities/app_utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../utilities/constants.dart';
 
 class MyCustomForm extends StatefulWidget {
   const MyCustomForm({super.key});
@@ -11,23 +12,14 @@ class MyCustomForm extends StatefulWidget {
   }
 }
 
-// Create a corresponding State class.
-// This class holds data related to the form.
 class MyCustomFormState extends State<MyCustomForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('This is app title'),
+        title: const Text(formTitle),
       ),
       body: Form(
         key: _formKey,
@@ -38,12 +30,12 @@ class MyCustomFormState extends State<MyCustomForm> {
               // The validator receives the text that the user has entered.
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter valid email address';
+                  return msgIncorrectEmailError;
                 }
                 return null;
               },
               decoration: new InputDecoration(
-                  hintText: 'Enter your email address',
+                  hintText: lblEmailPlaceholder,
                   contentPadding: EdgeInsets.only(
                       left: 15, bottom: 11, top: 11, right: 15)),
             ),
@@ -55,10 +47,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                   if (_formKey.currentState!.validate()) {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
-                    showSnackBar(context, 'Processing Data');
+                    showSnackBar(context, tempTextProcessingData);
                   }
                 },
-                child: const Text('Submit'),
+                child: const Text(lblSubmit),
               ),
             ),
           ],
