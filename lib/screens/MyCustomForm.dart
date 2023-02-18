@@ -8,8 +8,17 @@ class MyCustomForm extends StatefulWidget {
 }
 
 class _MyCustomFormState extends State<MyCustomForm> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: <Widget>[
+          // Add TextFormFields and ElevatedButton here.
+        ],
+      ),
+    );
   }
 }

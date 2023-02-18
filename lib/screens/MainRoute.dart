@@ -9,7 +9,7 @@ class MainRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mainItems2 = <String>[mainItem1Text, mainItem2Text];
+    var mainItems2 = <String>[mainItem1Text, mainItem2Text, mainItem3Text];
 
     return Scaffold(
       appBar: AppBar(
