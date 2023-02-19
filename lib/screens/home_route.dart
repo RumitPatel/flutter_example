@@ -1,12 +1,12 @@
-import 'package:android_flutter_examle/screens/my_custom_form.dart';
-import 'package:android_flutter_examle/screens/wordpairpage/WordPairHomePage.dart';
+import 'package:android_flutter_examle/screens/login_route.dart';
+import 'package:android_flutter_examle/screens/wordpairpage/word_pair_home_route.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
 import 'second_route.dart';
 
-class MainRoute extends StatelessWidget {
-  const MainRoute({super.key});
+class HomeRoute extends StatelessWidget {
+  const HomeRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class MainRoute extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => WordPairHomePage()),
+                              builder: (context) => WordPairRoute()),
                         );
                         break;
                       case mainItem2Text:
@@ -44,7 +44,7 @@ class MainRoute extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MyCustomForm()),
+                              builder: (context) => LoginRoute()),
                         );
                         break;
                     }

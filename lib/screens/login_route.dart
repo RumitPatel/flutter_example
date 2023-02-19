@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
 
-class MyCustomForm extends StatefulWidget {
-  const MyCustomForm({super.key});
+class LoginRoute extends StatefulWidget {
+  const LoginRoute({super.key});
 
   @override
-  MyCustomFormState createState() {
-    return MyCustomFormState();
+  LoginRouteState createState() {
+    return LoginRouteState();
   }
 }
 
-class MyCustomFormState extends State<MyCustomForm> {
+class LoginRouteState extends State<LoginRoute> {
   final _formKey = GlobalKey<FormState>();
 
   @override

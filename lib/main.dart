@@ -1,7 +1,9 @@
-import 'package:android_flutter_examle/screens/main_route.dart';
+import 'package:android_flutter_examle/screens/home_route.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'screens/login_route.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +23,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
         ),
         // home: MyHomePage(),
-        home: MainRoute(),
+        // home: MainRoute(),
+        home: LoginRoute(),
       ),
     );
   }
