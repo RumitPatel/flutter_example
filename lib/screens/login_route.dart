@@ -1,3 +1,4 @@
+import 'package:android_flutter_examle/screens/home_route.dart';
 import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -64,6 +65,11 @@ class LoginRouteState extends State<LoginRoute> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       showSnackBar(context, tempTextProcessingData);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeRoute()),
+                      );
                     }
                   },
                   child: const Text(lblSubmit),

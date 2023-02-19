@@ -16,4 +16,4 @@ const String msgIncorrectPasswordError = "Please enter valid password";
 
 const String lblSubmit = "Submit";
 
-const String tempTextProcessingData = "Processing Data";
+const String tempTextProcessingData = "Login success!";
