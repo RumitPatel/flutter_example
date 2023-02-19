@@ -28,21 +28,32 @@ class LoginRouteState extends State<LoginRoute> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return msgIncorrectEmailError;
-                  }
-                  if (isValidEmail(value)) {
-                    return msgIncorrectEmailError;
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.tealAccent,
+                  borderRadius: BorderRadius.circular(inputRadios),
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return msgIncorrectEmailError;
+                    }
+                    if (isValidEmail(value)) {
+                      return msgIncorrectEmailError;
+                    }
+                    return null;
+                  },
+                  decoration: const InputDecoration(
+                    hintStyle: TextStyle(fontSize: textSizeNormal),
                     hintText: lblEmailPlaceholder,
+                    prefixIcon: Icon(Icons.email),
+                    border: InputBorder.none,
                     contentPadding: EdgeInsets.only(
-                        left: 15, bottom: 11, top: 11, right: 15)),
+                        left: 15, bottom: 11, top: 11, right: 15
+                    ),
+                  ),
+                ),
               ),
               TextFormField(
                 obscureText: true,
