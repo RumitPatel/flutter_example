@@ -1,5 +1,6 @@
 import 'package:android_flutter_examle/screens/login_route.dart';
 import 'package:android_flutter_examle/screens/wordpairpage/word_pair_home_route.dart';
+import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
@@ -27,25 +28,13 @@ class HomeRoute extends StatelessWidget {
                   onPressed: () {
                     switch (mainItem) {
                       case mainItem1Text:
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => WordPairRoute()),
-                        );
+                        navigateTo(context, WordPairRoute());
                         break;
                       case mainItem2Text:
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SecondRoute()),
-                        );
+                        navigateTo(context, SecondRoute());
                         break;
                       case mainItem3Text:
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginRoute()),
-                        );
+                        navigateTo(context, LoginRoute());
                         break;
                     }
                   },

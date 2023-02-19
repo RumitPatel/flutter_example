@@ -65,11 +65,7 @@ class LoginRouteState extends State<LoginRoute> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       showSnackBar(context, tempTextProcessingData);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeRoute()),
-                      );
+                      navigateTo(context, HomeRoute());
                     }
                   },
                   child: const Text(lblSubmit),
