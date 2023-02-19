@@ -28,51 +28,59 @@ class LoginRouteState extends State<LoginRoute> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.cyan,
-                  borderRadius: BorderRadius.circular(inputRadios),
-                ),
-                child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return msgIncorrectEmailError;
-                    }
-                    if (isValidEmail(value)) {
-                      return msgIncorrectEmailError;
-                    }
-                    return null;
-                  },
-                  decoration: const InputDecoration(
-                    hintStyle: TextStyle(fontSize: textSizeNormal),
-                    hintText: lblEmailPlaceholder,
-                    prefixIcon: Icon(Icons.email),
-                    contentPadding: EdgeInsets.only(
-                        left: 15, bottom: 10, top: 10, right: 15),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.cyan,
+                    borderRadius: BorderRadius.circular(inputRadios),
+                  ),
+                  child: TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return msgIncorrectEmailError;
+                      }
+                      if (isValidEmail(value)) {
+                        return msgIncorrectEmailError;
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                      hintStyle: TextStyle(fontSize: textSizeNormal),
+                      hintText: lblEmailPlaceholder,
+                      prefixIcon: Icon(Icons.email),
+                      contentPadding: EdgeInsets.only(
+                          left: 15, bottom: 10, top: 10, right: 15),
+                    ),
                   ),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.cyan,
-                  borderRadius: BorderRadius.circular(inputRadios),
-                ),
-                child: TextFormField(
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return msgIncorrectPasswordError;
-                    }
-                    return null;
-                  },
-                  decoration: const InputDecoration(
-                      hintStyle: TextStyle(fontSize: textSizeNormal),
-                      hintText: lblPasswordPlaceholder,
-                      contentPadding: EdgeInsets.only(
-                          left: 15, bottom: 11, top: 11, right: 15)),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.cyan,
+                    borderRadius: BorderRadius.circular(inputRadios),
+                  ),
+                  child: TextFormField(
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return msgIncorrectPasswordError;
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                        hintStyle: TextStyle(fontSize: textSizeNormal),
+                        hintText: lblPasswordPlaceholder,
+                        contentPadding: EdgeInsets.only(
+                            left: 15, bottom: 11, top: 11, right: 15)),
+                  ),
                 ),
               ),
               Padding(
