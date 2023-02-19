@@ -29,58 +29,53 @@ class LoginRouteState extends State<LoginRoute> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.cyan,
-                    borderRadius: BorderRadius.circular(inputRadios),
-                  ),
-                  child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return msgIncorrectEmailError;
-                      }
-                      if (isValidEmail(value)) {
-                        return msgIncorrectEmailError;
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                      hintStyle: TextStyle(fontSize: textSizeNormal),
-                      hintText: lblEmailPlaceholder,
-                      prefixIcon: Icon(Icons.email),
-                      contentPadding: EdgeInsets.only(
-                          left: 15, bottom: 10, top: 10, right: 15),
-                    ),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                child: TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return msgIncorrectEmailError;
+                    }
+                    if (isValidEmail(value)) {
+                      return msgIncorrectEmailError;
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5)),
+                    filled: true,
+                    fillColor: Colors.cyan,
+                    hintStyle: TextStyle(fontSize: textSizeNormal),
+                    hintText: lblEmailPlaceholder,
+                    prefixIcon: Icon(Icons.email),
+                    contentPadding: EdgeInsets.only(
+                        left: 15, bottom: 10, top: 10, right: 15),
                   ),
                 ),
               ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.cyan,
-                    borderRadius: BorderRadius.circular(inputRadios),
-                  ),
-                  child: TextFormField(
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return msgIncorrectPasswordError;
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                        hintStyle: TextStyle(fontSize: textSizeNormal),
-                        hintText: lblPasswordPlaceholder,
-                        contentPadding: EdgeInsets.only(
-                            left: 15, bottom: 11, top: 11, right: 15)),
-                  ),
+                child: TextFormField(
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return msgIncorrectPasswordError;
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      filled: true,
+                      fillColor: Colors.cyan,
+                      hintStyle: TextStyle(fontSize: textSizeNormal),
+                      hintText: lblPasswordPlaceholder,
+                      contentPadding: EdgeInsets.only(
+                          left: 15, bottom: 11, top: 11, right: 15)),
                 ),
               ),
               Padding(
