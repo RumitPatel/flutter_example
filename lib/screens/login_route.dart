@@ -50,12 +50,7 @@ class LoginRouteState extends State<LoginRoute> {
                     prefixIcon: Icon(Icons.email),
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.only(
-                        left: 15, bottom: 11, top: 11, right: 15
-                    ),
-                    errorStyle: TextStyle(
-                      fontSize: 16.0,
-                      backgroundColor: Colors.white,
-                    ),
+                        left: 15, bottom: 11, top: 11, right: 15),
                   ),
                 ),
               ),
