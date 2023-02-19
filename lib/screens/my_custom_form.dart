@@ -26,7 +26,6 @@ class MyCustomFormState extends State<MyCustomForm> {
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
