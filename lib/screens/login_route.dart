@@ -30,7 +30,7 @@ class LoginRouteState extends State<LoginRoute> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.tealAccent,
+                  color: Colors.cyan,
                   borderRadius: BorderRadius.circular(inputRadios),
                 ),
                 child: TextFormField(
@@ -51,6 +51,10 @@ class LoginRouteState extends State<LoginRoute> {
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.only(
                         left: 15, bottom: 11, top: 11, right: 15
+                    ),
+                    errorStyle: TextStyle(
+                      fontSize: 16.0,
+                      backgroundColor: Colors.white,
                     ),
                   ),
                 ),
