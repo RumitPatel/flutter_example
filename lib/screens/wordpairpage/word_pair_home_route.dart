@@ -4,14 +4,14 @@ import 'package:provider/provider.dart';
 
 import '../../main.dart';
 import '../../utilities/constants.dart';
-import '../SecondRoute.dart';
+import '../second_route.dart';
 
-class WordPairHomePage extends StatefulWidget {
+class WordPairRoute extends StatefulWidget {
   @override
-  State<WordPairHomePage> createState() => _WordPairHomePageState();
+  State<WordPairRoute> createState() => _WordPairRouteState();
 }
 
-class _WordPairHomePageState extends State<WordPairHomePage> {
+class _WordPairRouteState extends State<WordPairRoute> {
   var selectedIndex = 0;
 
   @override

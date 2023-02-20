@@ -1,10 +1,12 @@
-import 'package:android_flutter_examle/screens/MainRoute.dart';
+import 'package:android_flutter_examle/utilities/constants.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'screens/login_route.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,13 +17,12 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'Namer App',
+        title: appName,
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
         ),
-        // home: MyHomePage(),
-        home: MainRoute(),
+        home: const LoginRoute(),
       ),
     );
   }
@@ -43,15 +44,6 @@ class MyAppState extends ChangeNotifier {
   }
 
   var favourites = <WordPair>[];
-
-  /*void toggleFavorite() {
-    if (favourites.contains(current)) {
-      favourites.remove(current);
-    } else {
-      favourites.add(current);
-    }
-    notifyListeners();
-  }*/
 
   void toggleFavorite([WordPair? pair]) {
     pair = pair ?? current;

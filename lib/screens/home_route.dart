@@ -1,12 +1,13 @@
-import 'package:android_flutter_examle/screens/MyCustomForm.dart';
-import 'package:android_flutter_examle/screens/wordpairpage/WordPairHomePage.dart';
+import 'package:android_flutter_examle/screens/login_route.dart';
+import 'package:android_flutter_examle/screens/wordpairpage/word_pair_home_route.dart';
+import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
-import 'SecondRoute.dart';
+import 'second_route.dart';
 
-class MainRoute extends StatelessWidget {
-  const MainRoute({super.key});
+class HomeRoute extends StatelessWidget {
+  const HomeRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,25 +28,13 @@ class MainRoute extends StatelessWidget {
                   onPressed: () {
                     switch (mainItem) {
                       case mainItem1Text:
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => WordPairHomePage()),
-                        );
+                        navigateTo(context, WordPairRoute());
                         break;
                       case mainItem2Text:
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SecondRoute()),
-                        );
+                        navigateTo(context, SecondRoute());
                         break;
                       case mainItem3Text:
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyCustomForm()),
-                        );
+                        navigateTo(context, LoginRoute());
                         break;
                     }
                   },
