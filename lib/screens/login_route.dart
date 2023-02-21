@@ -48,9 +48,9 @@ class LoginRouteState extends State<LoginRoute> {
                         borderRadius: BorderRadius.circular(5)),
                     filled: true,
                     fillColor: Colors.cyan,
-                    hintStyle: TextStyle(fontSize: textSizeNormal),
+                    hintStyle: const TextStyle(fontSize: textSizeNormal),
                     hintText: lblEmailPlaceholder,
-                    prefixIcon: Icon(Icons.email),
+                    prefixIcon: const Icon(Icons.email),
                     contentPadding: const EdgeInsets.only(
                         left: 15, bottom: 10, top: 10, right: 15),
                   ),
@@ -75,7 +75,7 @@ class LoginRouteState extends State<LoginRoute> {
                           borderRadius: BorderRadius.circular(5)),
                       filled: true,
                       fillColor: Colors.cyan,
-                      hintStyle: TextStyle(fontSize: textSizeNormal),
+                      hintStyle: const TextStyle(fontSize: textSizeNormal),
                       hintText: lblPasswordPlaceholder,
                       contentPadding: const EdgeInsets.only(
                           left: 15, bottom: 11, top: 11, right: 15)),
@@ -103,7 +103,7 @@ class LoginRouteState extends State<LoginRoute> {
   void checkAndGo() {
     if (_formKey.currentState!.validate()) {
       showSnackBar(context, tempTextProcessingData);
-      navigateTo(context, HomeRoute());
+      navigateTo(context, const HomeRoute());
     }
   }
 }
