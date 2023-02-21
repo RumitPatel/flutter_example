@@ -31,6 +31,7 @@ class LoginRouteState extends State<LoginRoute> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 child: TextFormField(
+                  textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -58,6 +59,7 @@ class LoginRouteState extends State<LoginRoute> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 child: TextFormField(
+                  textInputAction: TextInputAction.done,
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
