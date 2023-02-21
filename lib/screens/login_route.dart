@@ -29,8 +29,10 @@ class LoginRouteState extends State<LoginRoute> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 child: TextFormField(
+                  textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -46,10 +48,10 @@ class LoginRouteState extends State<LoginRoute> {
                         borderRadius: BorderRadius.circular(5)),
                     filled: true,
                     fillColor: Colors.cyan,
-                    hintStyle: TextStyle(fontSize: textSizeNormal),
+                    hintStyle: const TextStyle(fontSize: textSizeNormal),
                     hintText: lblEmailPlaceholder,
-                    prefixIcon: Icon(Icons.email),
-                    contentPadding: EdgeInsets.only(
+                    prefixIcon: const Icon(Icons.email),
+                    contentPadding: const EdgeInsets.only(
                         left: 15, bottom: 10, top: 10, right: 15),
                   ),
                 ),
@@ -58,6 +60,7 @@ class LoginRouteState extends State<LoginRoute> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 child: TextFormField(
+                  textInputAction: TextInputAction.done,
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
@@ -72,20 +75,20 @@ class LoginRouteState extends State<LoginRoute> {
                           borderRadius: BorderRadius.circular(5)),
                       filled: true,
                       fillColor: Colors.cyan,
-                      hintStyle: TextStyle(fontSize: textSizeNormal),
+                      hintStyle: const TextStyle(fontSize: textSizeNormal),
                       hintText: lblPasswordPlaceholder,
-                      contentPadding: EdgeInsets.only(
+                      contentPadding: const EdgeInsets.only(
                           left: 15, bottom: 11, top: 11, right: 15)),
+                  onFieldSubmitted: (value) {
+                    checkAndGo();
+                  },
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      showSnackBar(context, tempTextProcessingData);
-                      navigateTo(context, HomeRoute());
-                    }
+                    checkAndGo();
                   },
                   child: const Text(lblSubmit),
                 ),
@@ -95,5 +98,12 @@ class LoginRouteState extends State<LoginRoute> {
         ),
       ),
     );
+  }
+
+  void checkAndGo() {
+    if (_formKey.currentState!.validate()) {
+      showSnackBar(context, tempTextProcessingData);
+      navigateTo(context, const HomeRoute());
+    }
   }
 }
