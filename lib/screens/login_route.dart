@@ -79,7 +79,7 @@ class LoginRouteState extends State<LoginRoute> {
                       hintText: lblPasswordPlaceholder,
                       contentPadding: const EdgeInsets.only(
                           left: 15, bottom: 11, top: 11, right: 15)),
-                  onFieldSubmitted: (value){
+                  onFieldSubmitted: (value) {
                     checkAndGo();
                   },
                 ),
