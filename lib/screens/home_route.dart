@@ -23,8 +23,7 @@ class HomeRoute extends StatelessWidget {
             for (var mainItem in mainItems)
               ListTile(
                 leading: IconButton(
-                  icon: Icon(Icons.arrow_forward,
-                      semanticLabel: 'Selection arrow'),
+                  icon: const Icon(Icons.arrow_forward),
                   onPressed: () {
                     switch (mainItem) {
                       case mainItem1Text:
