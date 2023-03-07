@@ -23,27 +23,35 @@ class HomeRoute extends StatelessWidget {
             for (var mainItem in mainItems)
               ListTile(
                 leading: IconButton(
-                  icon: Icon(Icons.arrow_forward,
-                      semanticLabel: 'Selection arrow'),
+                  icon: const Icon(Icons.arrow_forward),
                   onPressed: () {
-                    switch (mainItem) {
-                      case mainItem1Text:
-                        navigateTo(context, WordPairRoute());
-                        break;
-                      case mainItem2Text:
-                        navigateTo(context, SecondRoute());
-                        break;
-                      case mainItem3Text:
-                        navigateTo(context, LoginRoute());
-                        break;
-                    }
+                    checkAndNavigate(context, mainItem);
                   },
                 ),
-                title: Text(mainItem),
+                title: TextButton(
+                  onPressed: () {
+                    checkAndNavigate(context, mainItem);
+                  },
+                  child: Text(mainItem),
+                ),
               ),
           ],
         ),
       ),
     );
+  }
+
+  void checkAndNavigate(BuildContext context, String mainItem) {
+    switch (mainItem) {
+      case mainItem1Text:
+        navigateTo(context, WordPairRoute());
+        break;
+      case mainItem2Text:
+        navigateTo(context, const SecondRoute());
+        break;
+      case mainItem3Text:
+        navigateTo(context, LoginRoute());
+        break;
+    }
   }
 }
