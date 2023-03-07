@@ -29,7 +29,9 @@ class HomeRoute extends StatelessWidget {
                   },
                 ),
                 title: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    checkAndNavigate(context, mainItem);
+                  },
                   child: Text(mainItem),
                 ),
               ),
