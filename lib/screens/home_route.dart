@@ -38,7 +38,7 @@ class HomeRoute extends StatelessWidget {
                     }
                   },
                 ),
-                title: Text(mainItem),
+                title: TextButton(onPressed: () {  }, child: Text(mainItem),),
               ),
           ],
         ),
