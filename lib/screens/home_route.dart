@@ -15,7 +15,7 @@ class HomeRoute extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main Screen'),
+        title: const Text('Home Screen'),
       ),
       body: Center(
         child: ListView(
