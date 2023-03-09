@@ -102,7 +102,7 @@ class LoginRouteState extends State<LoginRoute> {
 
   void checkAndGo() {
     if (_formKey.currentState!.validate()) {
-      showSnackBar(context, tempTextProcessingData);
+      snack(context, tempTextProcessingData);
       navigateTo(context, const HomeRoute());
     }
   }
