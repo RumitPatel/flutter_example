@@ -7,6 +7,8 @@ import '../../utilities/constants.dart';
 import '../second_route.dart';
 
 class WordPairRoute extends StatefulWidget {
+  const WordPairRoute({super.key});
+
   @override
   State<WordPairRoute> createState() => _WordPairRouteState();
 }
