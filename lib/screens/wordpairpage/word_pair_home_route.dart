@@ -27,7 +27,7 @@ class _WordPairRouteState extends State<WordPairRoute> {
         page = const FavoritesPage();
         break;
       case 2:
-        page = LoginPageTest();
+        page = const LoginPageTest();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
