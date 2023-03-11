@@ -24,7 +24,7 @@ class _WordPairRouteState extends State<WordPairRoute> {
         page = GeneratorPage();
         break;
       case 1:
-        page = FavoritesPage();
+        page = const FavoritesPage();
         break;
       case 2:
         page = LoginPageTest();
