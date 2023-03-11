@@ -44,7 +44,7 @@ class HomeRoute extends StatelessWidget {
   void checkAndNavigate(BuildContext context, String mainItem) {
     switch (mainItem) {
       case mainItem1Text:
-        navigateTo(context, WordPairRoute());
+        navigateTo(context, const WordPairRoute());
         break;
       case mainItem2Text:
         navigateTo(context, const SecondRoute());
