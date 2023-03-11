@@ -24,10 +24,10 @@ class _WordPairRouteState extends State<WordPairRoute> {
         page = GeneratorPage();
         break;
       case 1:
-        page = FavoritesPage();
+        page = const FavoritesPage();
         break;
       case 2:
-        page = LoginPageTest();
+        page = const LoginPageTest();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -43,7 +43,7 @@ class _WordPairRouteState extends State<WordPairRoute> {
             SafeArea(
               child: NavigationRail(
                 extended: constraints.maxWidth >= 600,
-                destinations: [
+                destinations: const [
                   NavigationRailDestination(
                     icon: Icon(Icons.home),
                     label: Text('Home'),
