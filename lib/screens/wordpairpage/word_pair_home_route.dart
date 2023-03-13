@@ -89,7 +89,7 @@ class FavoritesPage extends StatelessWidget {
     var favourites = appState.favourites;
 
     if (favourites.isEmpty) {
-      return Center(
+      return const Center(
         child: Text('No Favourite found!!!'),
       );
     }
@@ -103,7 +103,7 @@ class FavoritesPage extends StatelessWidget {
         for (var pair in favourites)
           ListTile(
             leading: IconButton(
-              icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
+              icon: const Icon(Icons.delete_outline, semanticLabel: 'Delete'),
               onPressed: () {
                 appState.removeFavorite(pair);
               },
@@ -116,6 +116,8 @@ class FavoritesPage extends StatelessWidget {
 }
 
 class GeneratorPage extends StatelessWidget {
+  const GeneratorPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
