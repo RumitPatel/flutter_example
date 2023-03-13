@@ -103,7 +103,7 @@ class FavoritesPage extends StatelessWidget {
         for (var pair in favourites)
           ListTile(
             leading: IconButton(
-              icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
+              icon: const Icon(Icons.delete_outline, semanticLabel: 'Delete'),
               onPressed: () {
                 appState.removeFavorite(pair);
               },
