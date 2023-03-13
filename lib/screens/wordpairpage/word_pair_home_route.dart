@@ -89,7 +89,7 @@ class FavoritesPage extends StatelessWidget {
     var favourites = appState.favourites;
 
     if (favourites.isEmpty) {
-      return Center(
+      return const Center(
         child: Text('No Favourite found!!!'),
       );
     }
