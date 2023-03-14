@@ -11,7 +11,7 @@ class HomeRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mainItems = <String>[mainItem1Text, mainItem2Text, mainItem3Text];
+    var mainItems = <String>[mainItem1Text, mainItem2Text, mainItem3Text, mainItem4Text];
 
     return Scaffold(
       appBar: AppBar(
@@ -50,6 +50,9 @@ class HomeRoute extends StatelessWidget {
         navigateTo(context, const SecondRoute());
         break;
       case mainItem3Text:
+        navigateTo(context, const LoginRoute());
+        break;
+      case mainItem4Text:
         navigateTo(context, const LoginRoute());
         break;
     }
