@@ -11,7 +11,7 @@ class HomeRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mainItems = <String>[mainItem1Text, mainItem2Text, mainItem4Text];
+    var mainItems = <String>[mainItem1Text, mainItem2Text, mainItem3Text];
 
     return Scaffold(
       appBar: AppBar(
