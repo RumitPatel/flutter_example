@@ -21,7 +21,7 @@ class _WordPairRouteState extends State<WordPairRoute> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = GeneratorPage();
+        page = const GeneratorPage();
         break;
       case 1:
         page = const FavoritesPage();
