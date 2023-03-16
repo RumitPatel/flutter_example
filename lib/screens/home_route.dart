@@ -55,7 +55,7 @@ class HomeRoute extends StatelessWidget {
         navigateTo(context, const SecondRoute());
         break;
       case mainItem3Text:
-
+        navigateTo(context, const LoginPageTest());
         break;
       case mainItem4Text:
         navigateTo(context, const LoginRoute());
