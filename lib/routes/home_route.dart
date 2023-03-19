@@ -3,9 +3,9 @@ import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
-import 'test_login_page_route.dart';
 import 'login_route.dart';
 import 'second_route.dart';
+import 'test_login_page_route.dart';
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({super.key});
@@ -43,6 +43,22 @@ class HomeRoute extends StatelessWidget {
               ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          print("value=$value");
+        },
+        items: [
+          BottomNavigationBarItem(
+              label: "Item 1", icon: Icon(Icons.arrow_forward)
+          ),
+          BottomNavigationBarItem(
+              label: "Item 2", icon: Icon(Icons.arrow_forward)
+          ),
+          BottomNavigationBarItem(
+              label: "Item 3", icon: Icon(Icons.arrow_forward)
+          ),
+        ],
       ),
     );
   }
