@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
 
-class LoginPageTest extends StatelessWidget {
-  const LoginPageTest({Key? key}) : super(key: key);
+class TestLoginPageRoute extends StatelessWidget {
+  const TestLoginPageRoute({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

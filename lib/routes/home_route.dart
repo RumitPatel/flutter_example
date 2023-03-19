@@ -3,7 +3,7 @@ import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
-import 'login_page_test.dart';
+import 'test_login_page_route.dart';
 import 'login_route.dart';
 import 'second_route.dart';
 
@@ -56,7 +56,7 @@ class HomeRoute extends StatelessWidget {
         navigateTo(context, const SecondRoute());
         break;
       case mainItem3Text:
-        navigateTo(context, const LoginPageTest());
+        navigateTo(context, const TestLoginPageRoute());
         break;
       case mainItem4Text:
         navigateTo(context, const LoginRoute());

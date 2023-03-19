@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../main.dart';
-import '../login_page_test.dart';
+import '../test_login_page_route.dart';
 
 class WordPairRoute extends StatefulWidget {
   const WordPairRoute({super.key});
@@ -26,7 +26,7 @@ class _WordPairRouteState extends State<WordPairRoute> {
         page = const FavoritesPage();
         break;
       case 2:
-        page = const LoginPageTest();
+        page = const TestLoginPageRoute();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
