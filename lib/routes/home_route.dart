@@ -1,9 +1,9 @@
-import 'package:android_flutter_examle/screens/login_route.dart';
-import 'package:android_flutter_examle/screens/wordpairpage/word_pair_home_route.dart';
+import 'package:android_flutter_examle/routes/wordpairpage/word_pair_home_route.dart';
 import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
+import 'login_route.dart';
 import 'second_route.dart';
 
 class HomeRoute extends StatelessWidget {

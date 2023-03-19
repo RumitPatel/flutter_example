@@ -1,9 +1,8 @@
+import 'package:android_flutter_examle/routes/login_route.dart';
 import 'package:android_flutter_examle/utilities/constants.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'screens/login_route.dart';
 
 void main() {
   runApp(const MyApp());
