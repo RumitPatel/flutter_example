@@ -1,4 +1,4 @@
-import 'package:android_flutter_examle/routes/wordpairpage/word_pair_home_route.dart';
+import 'package:android_flutter_examle/routes/word_pair_home_route.dart';
 import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -49,12 +49,11 @@ class HomeRoute extends StatelessWidget {
           print("index=$value");
         },
         items: [
+          BottomNavigationBarItem(label: "Item 1", icon: Icon(Icons.home)),
           BottomNavigationBarItem(
-              label: "Item 1", icon: Icon(Icons.arrow_forward)),
+              label: "Item 2", icon: Icon(Icons.shopping_cart)),
           BottomNavigationBarItem(
-              label: "Item 2", icon: Icon(Icons.arrow_forward)),
-          BottomNavigationBarItem(
-              label: "Item 3", icon: Icon(Icons.arrow_forward)),
+              label: "Settings", icon: Icon(Icons.settings)),
         ],
       ),
     );

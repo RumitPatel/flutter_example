@@ -2,8 +2,8 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../main.dart';
-import '../test_login_page_route.dart';
+import '../main.dart';
+import 'test_login_page_route.dart';
 
 class WordPairRoute extends StatefulWidget {
   const WordPairRoute({super.key});
