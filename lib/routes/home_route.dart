@@ -46,7 +46,7 @@ class HomeRoute extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
-          print("value=$value");
+          print("index=$value");
         },
         items: [
           BottomNavigationBarItem(
