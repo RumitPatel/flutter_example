@@ -50,14 +50,11 @@ class HomeRoute extends StatelessWidget {
         },
         items: [
           BottomNavigationBarItem(
-              label: "Item 1", icon: Icon(Icons.arrow_forward)
-          ),
+              label: "Item 1", icon: Icon(Icons.arrow_forward)),
           BottomNavigationBarItem(
-              label: "Item 2", icon: Icon(Icons.arrow_forward)
-          ),
+              label: "Item 2", icon: Icon(Icons.arrow_forward)),
           BottomNavigationBarItem(
-              label: "Item 3", icon: Icon(Icons.arrow_forward)
-          ),
+              label: "Item 3", icon: Icon(Icons.arrow_forward)),
         ],
       ),
     );
