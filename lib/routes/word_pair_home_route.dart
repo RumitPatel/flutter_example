@@ -2,9 +2,8 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../main.dart';
-import '../../utilities/constants.dart';
-import '../second_route.dart';
+import '../main.dart';
+import 'test_login_page_route.dart';
 
 class WordPairRoute extends StatefulWidget {
   const WordPairRoute({super.key});
@@ -27,7 +26,7 @@ class _WordPairRouteState extends State<WordPairRoute> {
         page = const FavoritesPage();
         break;
       case 2:
-        page = const LoginPageTest();
+        page = const TestLoginPageRoute();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -251,62 +250,6 @@ class _HistoryListViewState extends State<HistoryListView> {
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-class LoginPageTest extends StatelessWidget {
-  const LoginPageTest({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.tealAccent,
-              borderRadius: BorderRadius.circular(inputRadios),
-            ),
-            child: TextField(
-              decoration: InputDecoration(
-                hintStyle: TextStyle(fontSize: textSizeNormal),
-                hintText: 'Enter password here',
-                prefixIcon: Icon(Icons.email),
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.all(inputContentPadding),
-              ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.tealAccent,
-              borderRadius: BorderRadius.circular(inputRadios),
-            ),
-            child: TextField(
-              decoration: InputDecoration(
-                hintStyle: TextStyle(fontSize: textSizeNormal),
-                hintText: 'Search your password here',
-                suffixIcon: Icon(Icons.remove_red_eye),
-                prefixIcon: Icon(Icons.password),
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.all(inputContentPadding),
-              ),
-            ),
-          ),
-          ElevatedButton.icon(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SecondRoute()),
-              );
-            },
-            icon: Icon(Icons.login),
-            label: Text('Login'),
-          )
-        ],
       ),
     );
   }

@@ -1,10 +1,11 @@
-import 'package:android_flutter_examle/routes/wordpairpage/word_pair_home_route.dart';
+import 'package:android_flutter_examle/routes/word_pair_home_route.dart';
 import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
 import 'login_route.dart';
 import 'second_route.dart';
+import 'test_login_page_route.dart';
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({super.key});
@@ -43,6 +44,18 @@ class HomeRoute extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          print("index=$value");
+        },
+        items: [
+          BottomNavigationBarItem(label: "Item 1", icon: Icon(Icons.home)),
+          BottomNavigationBarItem(
+              label: "Item 2", icon: Icon(Icons.shopping_cart)),
+          BottomNavigationBarItem(
+              label: "Settings", icon: Icon(Icons.settings)),
+        ],
+      ),
     );
   }
 
@@ -55,7 +68,7 @@ class HomeRoute extends StatelessWidget {
         navigateTo(context, const SecondRoute());
         break;
       case mainItem3Text:
-        navigateTo(context, const LoginPageTest());
+        navigateTo(context, const TestLoginPageRoute());
         break;
       case mainItem4Text:
         navigateTo(context, const LoginRoute());
