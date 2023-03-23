@@ -1,3 +1,4 @@
+import 'package:android_flutter_examle/routes/tab_routes/tab_route.dart';
 import 'package:android_flutter_examle/routes/word_pair_home_route.dart';
 import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +72,7 @@ class HomeRoute extends StatelessWidget {
         navigateTo(context, const TestLoginPageRoute());
         break;
       case mainItem4Text:
-        navigateTo(context, const LoginRoute());
+        navigateTo(context, const TabRoute());
         break;
       case mainItem5Text:
         navigateTo(context, const LoginRoute());
