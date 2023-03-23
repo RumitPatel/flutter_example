@@ -17,7 +17,8 @@ class HomeRoute extends StatelessWidget {
       mainItem1Text,
       mainItem2Text,
       mainItem3Text,
-      mainItem4Text
+      mainItem4Text,
+      mainItem5Text
     ];
 
     return Scaffold(
