@@ -21,6 +21,9 @@ class TabRoute extends StatelessWidget {
           BottomNavigationBarItem(
               label: "Settings", icon: Icon(Icons.settings)),
         ],
+        onTap: (index) {
+
+        },
       ),
     );
   }
