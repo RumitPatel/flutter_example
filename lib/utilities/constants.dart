@@ -7,7 +7,8 @@ const double inputContentPadding = 20;
 const String mainItem1Text = "Word Pair Test Page";
 const String mainItem2Text = "Navigation Test";
 const String mainItem3Text = "Login Page Test";
-const String mainItem4Text = "Logout";
+const String mainItem4Text = "Tab Page Test";
+const String mainItem5Text = "Logout";
 
 const String formTitle = "Login form";
 const String lblEmailPlaceholder = "Enter your email address";
