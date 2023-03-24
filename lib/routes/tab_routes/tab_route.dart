@@ -58,7 +58,7 @@ class _TabRouteStatus extends State<TabRoute> {
         ],
         onTap: _onItemTapped,
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.cyan[800],
       ),
     );
   }
