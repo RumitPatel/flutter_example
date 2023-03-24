@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TabRoute extends StatefulWidget {
-  const TabRoute({super.key});
+class TabRoute2 extends StatefulWidget {
+  const TabRoute2({super.key});
 
   @override
-  State<TabRoute> createState() => _TabRouteStatus();
+  State<TabRoute2> createState() => _TabRoute2State();
 }
 
-class _TabRouteStatus extends State<TabRoute> {
+class _TabRoute2State extends State<TabRoute2> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -36,10 +36,10 @@ class _TabRouteStatus extends State<TabRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tab route title'),
+        title: const Text('BottomNavigationBar Sample'),
       ),
       body: Center(
-        child: Text('This is center part'),
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -56,9 +56,9 @@ class _TabRouteStatus extends State<TabRoute> {
             label: 'School',
           ),
         ],
-        onTap: _onItemTapped,
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }
