@@ -39,7 +39,7 @@ class _TabRouteStatus extends State<TabRoute> {
         title: const Text('Tab route title'),
       ),
       body: Center(
-        child: Text('This is center part'),
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
