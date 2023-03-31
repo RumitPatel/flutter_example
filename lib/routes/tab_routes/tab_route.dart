@@ -36,7 +36,7 @@ class _TabRouteStatus extends State<TabRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tab route title'),
+        title: _tabWidgets.elementAt(_selectedIndex),
       ),
       body: Center(
         child: _tabWidgets.elementAt(_selectedIndex),
