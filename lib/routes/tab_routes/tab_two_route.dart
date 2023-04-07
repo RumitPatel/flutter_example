@@ -1,54 +1,16 @@
 import 'package:flutter/material.dart';
 
-class TabOneRoute extends StatefulWidget {
-  const TabOneRoute({super.key});
+class TabTwoRoute extends StatefulWidget {
+  const TabTwoRoute({super.key});
 
   @override
-  State<TabOneRoute> createState() => _TabOneRoute();
+  State<TabTwoRoute> createState() => _TabTwoRoute();
 }
 
-class _TabOneRoute extends State<TabOneRoute> {
+class _TabTwoRoute extends State<TabTwoRoute> {
   @override
   Widget build(BuildContext context) {
-    const title = 'Horizontal List';
-
-    return MaterialApp(
-      title: title,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(title),
-        ),
-        body: Container(
-          margin: const EdgeInsets.symmetric(vertical: 20.0),
-          height: 200.0,
-          child: ListView(
-            // This next line does the trick.
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              Container(
-                width: 160.0,
-                color: Colors.red,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.blue,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.green,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.yellow,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.orange,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    const title = 'This is tab Two route title';
+    return Text(title);
   }
 }
