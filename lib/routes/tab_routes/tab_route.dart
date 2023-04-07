@@ -1,3 +1,4 @@
+import 'package:android_flutter_examle/routes/tab_routes/tab_home_route.dart';
 import 'package:flutter/material.dart';
 
 class TabRoute extends StatefulWidget {
@@ -12,10 +13,7 @@ class _TabRouteStatus extends State<TabRoute> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _tabWidgets = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    TabHomeRoute(),
     Text(
       'Index 1: Business',
       style: optionStyle,
