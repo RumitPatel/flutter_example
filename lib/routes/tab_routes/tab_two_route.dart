@@ -11,6 +11,6 @@ class _TabTwoRoute extends State<TabTwoRoute> {
   @override
   Widget build(BuildContext context) {
     const title = 'This is tab Two route title';
-    return Text(title);
+    return const Text(title);
   }
 }
