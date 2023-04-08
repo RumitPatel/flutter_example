@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TabHomeRoute extends StatefulWidget {
-  const TabHomeRoute({super.key});
+class TabOneRoute extends StatefulWidget {
+  const TabOneRoute({super.key});
 
   @override
-  State<TabHomeRoute> createState() => _TabHomeRoute();
+  State<TabOneRoute> createState() => _TabOneRoute();
 }
 
-class _TabHomeRoute extends State<TabHomeRoute> {
+class _TabOneRoute extends State<TabOneRoute> {
   @override
   Widget build(BuildContext context) {
     const title = 'Horizontal List';
