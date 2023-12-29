@@ -10,14 +10,13 @@ const String mainItem3Text = "Login Page Test";
 const String mainItem4Text = "Tab Page Test";
 const String mainItem5Text = "Logout";
 
-const String formTitle = "Login form";
+const String loginFormTitle = "Login form";
 const String lblEmailPlaceholder = "Enter your email address";
 const String msgIncorrectEmailError = "Please enter valid email address";
 const String lblPasswordPlaceholder = "Enter your password";
 const String msgIncorrectPasswordError = "Please enter valid password";
 
 const String lblSubmit = "Submit";
-
 const String tempTextProcessingData = "Login success!";
-
 const String loginTestTitle = "Login test page";
+const String homeScreenTitle = "Home Screen";

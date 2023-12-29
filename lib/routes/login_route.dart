@@ -20,7 +20,7 @@ class LoginRouteState extends State<LoginRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(formTitle),
+        title: const Text(loginFormTitle),
       ),
       body: Center(
         child: Form(
@@ -78,14 +78,14 @@ class LoginRouteState extends State<LoginRoute> {
                       hintStyle: const TextStyle(fontSize: textSizeNormal),
                       hintText: lblPasswordPlaceholder,
                       contentPadding: const EdgeInsets.only(
-                          left: 15, bottom: 11, top: 11, right: 15)),
+                          left: 15, bottom: 10, top: 10, right: 15)),
                   onFieldSubmitted: (value) {
                     checkAndGo();
                   },
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 child: ElevatedButton(
                   onPressed: () {
                     checkAndGo();
