@@ -1,4 +1,4 @@
-import 'package:android_flutter_examle/state_test/state_test.dart';
+import 'package:android_flutter_examle/routes/home_route.dart';
 import 'package:android_flutter_examle/utilities/constants.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
         ),*/
       /*theme: ThemeData.dark(),*/
-      home: const StateTest(),
+      home: const HomeRoute(),
       // ),
     );
   }

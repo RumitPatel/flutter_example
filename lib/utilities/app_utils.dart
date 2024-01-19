@@ -1,18 +1,37 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 
-snack(BuildContext context, String message) {
+import 'constants.dart';
+
+void snack(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(content: Text(message)),
   );
 }
 
-isValidEmail(String value) {
+bool isValidEmail(String value) {
   return !RegExp(r'\S+@\S+\.\S+').hasMatch(value);
 }
 
-navigateTo(BuildContext context, routeToBeNavigated) {
+void navigateTo(BuildContext context, routeToBeNavigated) {
   Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => routeToBeNavigated),
   );
+}
+
+List<String> getMainMenuItems() {
+  var mainItems = <String>[
+    mainItem1Text,
+    mainItem2Text,
+    mainItem3Text,
+    mainItem4Text,
+    mainItem5Text,
+    mainItem6Text,
+    mainItem7Text,
+    mainItem8Text,
+  ];
+
+  return mainItems;
 }

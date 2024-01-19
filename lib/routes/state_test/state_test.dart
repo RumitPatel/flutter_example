@@ -17,6 +17,9 @@ class StateTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Test State with Riverpod"),
+      ),
       body: SafeArea(
         child: Column(
           children: [ProgressPart(), TaskList()],
