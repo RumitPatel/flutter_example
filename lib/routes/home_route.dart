@@ -25,16 +25,22 @@ class HomeRoute extends StatelessWidget {
           itemCount: getMainMenuItems().length,
           itemBuilder: (context, index) {
             var mainMenuItem = getMainMenuItems()[index];
-            return GestureDetector(
-              onTap: (){
-                _checkAndNavigate(context, mainMenuItem);
-              },
-                child: MainMenuListItem(mainMenuItem: mainMenuItem));
+            return InkWell(
+                onTap: () {
+                  _checkAndNavigate(context, mainMenuItem);
+                },
+                child: MainMenuListItem(
+                  mainMenuItem: mainMenuItem,
+                    myFunction:myFunctionToPass
+                ));
           },
         ),
       ),
-
     );
+  }
+
+  void myFunctionToPass() {
+    print('Function passed to the constructor is executed!');
   }
 
   void _checkAndNavigate(BuildContext context, String mainItem) {
@@ -69,10 +75,12 @@ class HomeRoute extends StatelessWidget {
 
 class MainMenuListItem extends StatelessWidget {
   String mainMenuItem;
+  final Function myFunction;
 
   MainMenuListItem({
     super.key,
     required this.mainMenuItem,
+    required this.myFunction,
   });
 
   @override
@@ -84,7 +92,9 @@ class MainMenuListItem extends StatelessWidget {
           width: 80.0,
           child: Icon(Icons.arrow_forward),
         ),
-        Text(mainMenuItem)
+        Text(
+            mainMenuItem
+        )
       ],
     );
   }
