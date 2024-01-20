@@ -30,7 +30,6 @@ List<String> getMainMenuItems() {
     mainItem5Text,
     mainItem6Text,
     mainItem7Text,
-    mainItem8Text,
   ];
 
   return mainItems;

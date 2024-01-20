@@ -1,15 +1,15 @@
-import 'package:android_flutter_examle/routes/tab_routes/tab_one_route.dart';
-import 'package:android_flutter_examle/routes/tab_routes/tab_two_route.dart';
+import 'package:android_flutter_examle/routes/bottom_navigation_bar_tab/tab_one_route.dart';
+import 'package:android_flutter_examle/routes/bottom_navigation_bar_tab/tab_two_route.dart';
 import 'package:flutter/material.dart';
 
-class TabRoute extends StatefulWidget {
-  const TabRoute({super.key});
+class BottomNavigationBarTab extends StatefulWidget {
+  const BottomNavigationBarTab({super.key});
 
   @override
-  State<TabRoute> createState() => _TabRouteStatus();
+  State<BottomNavigationBarTab> createState() => _BottomNavigationBarTab();
 }
 
-class _TabRouteStatus extends State<TabRoute> {
+class _BottomNavigationBarTab extends State<BottomNavigationBarTab> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);

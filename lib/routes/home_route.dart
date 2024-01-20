@@ -1,12 +1,11 @@
 import 'package:android_flutter_examle/routes/sliverlist/sliver_list_route.dart';
 import 'package:android_flutter_examle/routes/state_test/state_test.dart';
-import 'package:android_flutter_examle/routes/tab_routes/tab_route.dart';
 import 'package:android_flutter_examle/routes/word_pair_home_route.dart';
 import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
-import 'bottom_navigationbar_test/bottom_navigationbar_test.dart';
+import 'bottom_navigation_bar_tab/bottom_navigation_bar_tab.dart';
 import 'login_route.dart';
 import 'second_route.dart';
 import 'test_login_page_route.dart';
@@ -53,7 +52,7 @@ class HomeRoute extends StatelessWidget {
         navigateTo(context, const TestLoginPageRoute());
         break;
       case mainItem4Text:
-        navigateTo(context, const TabRoute());
+        navigateTo(context, const BottomNavigationBarTab());
         break;
       case mainItem5Text:
         navigateTo(context, const LoginRoute());
@@ -63,9 +62,6 @@ class HomeRoute extends StatelessWidget {
         break;
       case mainItem7Text:
         navigateTo(context, const StateTest());
-        break;
-      case mainItem8Text:
-        navigateTo(context, const BottomNavigationBarTest());
         break;
     }
   }
