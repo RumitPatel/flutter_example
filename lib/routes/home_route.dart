@@ -1,4 +1,3 @@
-import 'package:android_flutter_examle/routes/bottomsheet_navigation/bottomsheet_navigation.dart';
 import 'package:android_flutter_examle/routes/sliverlist/sliver_list_route.dart';
 import 'package:android_flutter_examle/routes/state_test/state_test.dart';
 import 'package:android_flutter_examle/routes/tab_routes/tab_route.dart';
@@ -7,6 +6,7 @@ import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
+import 'bottom_navigationbar_test/bottom_navigationbar_test.dart';
 import 'login_route.dart';
 import 'second_route.dart';
 import 'test_login_page_route.dart';
@@ -30,9 +30,7 @@ class HomeRoute extends StatelessWidget {
                   _checkAndNavigate(context, mainMenuItem);
                 },
                 child: MainMenuListItem(
-                  mainMenuItem: mainMenuItem,
-                    myFunction:myFunctionToPass
-                ));
+                    mainMenuItem: mainMenuItem, myFunction: myFunctionToPass));
           },
         ),
       ),
@@ -67,7 +65,7 @@ class HomeRoute extends StatelessWidget {
         navigateTo(context, const StateTest());
         break;
       case mainItem8Text:
-        navigateTo(context, const BottomSheetNavigation());
+        navigateTo(context, const BottomNavigationBarTest());
         break;
     }
   }
@@ -92,9 +90,7 @@ class MainMenuListItem extends StatelessWidget {
           width: 80.0,
           child: Icon(Icons.arrow_forward),
         ),
-        Text(
-            mainMenuItem
-        )
+        Text(mainMenuItem)
       ],
     );
   }
