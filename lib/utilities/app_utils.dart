@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 
 import 'constants.dart';
 
+const TextStyle myTextStyleBold = TextStyle(
+  fontSize: 30,
+  fontWeight: FontWeight.bold,
+);
+
 void snack(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(content: Text(message)),
