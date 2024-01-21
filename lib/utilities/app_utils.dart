@@ -39,3 +39,14 @@ List<String> getMainMenuItems() {
 
   return mainItems;
 }
+
+List<String> getListTypes() {
+  var mainItems = <String>[
+    "SingleChildScrollView",
+    "ListView",
+    "HorizontalListView",
+    "SliverList",
+  ];
+
+  return mainItems;
+}

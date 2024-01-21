@@ -12,10 +12,8 @@ class _TabTwoRoute extends State<TabTwoRoute> {
   Widget build(BuildContext context) {
     const title = 'This is tab Two route';
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title)
-      ),
-      body: Text(title),
+      appBar: AppBar(title: const Text(title)),
+      body: const Center(child: Text(title)),
     );
   }
 }

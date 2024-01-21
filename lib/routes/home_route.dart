@@ -1,11 +1,12 @@
-import 'package:android_flutter_examle/routes/sliverlist/sliver_list_route.dart';
 import 'package:android_flutter_examle/routes/state_test/state_test.dart';
 import 'package:android_flutter_examle/routes/word_pair_home_route.dart';
 import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
+import '../list_items/main_menu_list_item.dart';
 import '../utilities/constants.dart';
 import 'bottom_navigation_bar_tab/bottom_navigation_bar_tab.dart';
+import 'lists/list_examples.dart';
 import 'login_route.dart';
 import 'second_route.dart';
 import 'test_login_page_route.dart';
@@ -58,36 +59,11 @@ class HomeRoute extends StatelessWidget {
         navigateTo(context, const LoginRoute());
         break;
       case mainItem6Text:
-        navigateTo(context, const SliverListRoute());
+        navigateTo(context, const ListExamples());
         break;
       case mainItem7Text:
         navigateTo(context, const StateTest());
         break;
     }
-  }
-}
-
-class MainMenuListItem extends StatelessWidget {
-  String mainMenuItem;
-  final Function myFunction;
-
-  MainMenuListItem({
-    super.key,
-    required this.mainMenuItem,
-    required this.myFunction,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const SizedBox(
-          height: 80.0,
-          width: 80.0,
-          child: Icon(Icons.arrow_forward),
-        ),
-        Text(mainMenuItem)
-      ],
-    );
   }
 }

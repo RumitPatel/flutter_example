@@ -9,7 +9,7 @@ const String mainItem2Text = "Navigation Test";
 const String mainItem3Text = "Login Page Test";
 const String mainItem4Text = "Bottom navigation tab";
 const String mainItem5Text = "Logout";
-const String mainItem6Text = "Sliver List";
+const String mainItem6Text = "List Examples";
 const String mainItem7Text = "State test with river pod";
 
 const String loginFormTitle = "Login form";
