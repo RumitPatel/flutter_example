@@ -1,38 +1,42 @@
+import 'package:android_flutter_examle/routes/pending_route.dart';
+import 'package:android_flutter_examle/routes/second_route.dart';
 import 'package:android_flutter_examle/routes/state_test/state_test.dart';
+import 'package:android_flutter_examle/routes/test_login_page_route.dart';
 import 'package:android_flutter_examle/routes/word_pair_home_route.dart';
 import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
-import '../list_items/main_menu_list_item.dart';
+import '../models/list_header_item.dart';
+import '../models/list_message_item.dart';
+import '../models/main_list_item.dart';
 import '../utilities/constants.dart';
 import 'bottom_navigation_bar_tab/bottom_navigation_bar_tab.dart';
-import 'lists/list_examples.dart';
+import 'lists/horizontal_container.dart';
+import 'lists/sliver_list_route.dart';
 import 'login_route.dart';
-import 'second_route.dart';
-import 'test_login_page_route.dart';
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List<MainListItem> items = getMainMenuItems3();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(homeScreenTitle),
       ),
-      body: Center(
-        child: ListView.builder(
-          itemCount: getMainMenuItems().length,
-          itemBuilder: (context, index) {
-            var mainMenuItem = getMainMenuItems()[index];
-            return InkWell(
-                onTap: () {
-                  _checkAndNavigate(context, mainMenuItem);
-                },
-                child: MainMenuListItem(
-                    mainMenuItem: mainMenuItem, myFunction: myFunctionToPass));
-          },
-        ),
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          final item = items[index];
+          return InkWell(
+              onTap: () {
+                navigateTo(context, item.getWidgetToNavigate(context));
+              },
+              child: item.getItemWidget(context)
+          );
+        },
       ),
     );
   }
@@ -40,30 +44,22 @@ class HomeRoute extends StatelessWidget {
   void myFunctionToPass() {
     print('Function passed to the constructor is executed!');
   }
+}
 
-  void _checkAndNavigate(BuildContext context, String mainItem) {
-    switch (mainItem) {
-      case mainItem1Text:
-        navigateTo(context, const WordPairRoute());
-        break;
-      case mainItem2Text:
-        navigateTo(context, const SecondRoute());
-        break;
-      case mainItem3Text:
-        navigateTo(context, const TestLoginPageRoute());
-        break;
-      case mainItem4Text:
-        navigateTo(context, const BottomNavigationBarTab());
-        break;
-      case mainItem5Text:
-        navigateTo(context, const LoginRoute());
-        break;
-      case mainItem6Text:
-        navigateTo(context, const ListExamples());
-        break;
-      case mainItem7Text:
-        navigateTo(context, const StateTest());
-        break;
-    }
-  }
+List<MainListItem> getMainMenuItems3() {
+  List<MainListItem> options = [
+    ListHeaderItem("Word Pair Test Page", const WordPairRoute()),
+    ListHeaderItem("Navigation Test", const SecondRoute()),
+    ListHeaderItem("Login Page Test", const TestLoginPageRoute()),
+    ListHeaderItem("Bottom navigation tab", const BottomNavigationBarTab()),
+    ListHeaderItem("Logout", const LoginRoute()),
+    ListHeaderItem("List Examples", const PendingRoute()),
+    ListMessageItem("SingleChildScrollView", const PendingRoute()),
+    ListMessageItem("ListView", const PendingRoute()),
+    ListMessageItem("HorizontalListView", const HorizontalContainer()),
+    ListMessageItem("SliverList", const SliverListRoute()),
+    ListHeaderItem("State test with river pod", const StateTest()),
+  ];
+
+  return options;
 }
