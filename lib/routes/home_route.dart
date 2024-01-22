@@ -20,7 +20,7 @@ class HomeRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<MainListItem> items = getMainMenuItems3();
+    final List<MainListItem> items = getMainMenuItems();
 
     return Scaffold(
       appBar: AppBar(
@@ -34,8 +34,7 @@ class HomeRoute extends StatelessWidget {
               onTap: () {
                 navigateTo(context, item.getWidgetToNavigate(context));
               },
-              child: item.getItemWidget(context)
-          );
+              child: item.getItemWidget(context));
         },
       ),
     );
@@ -46,7 +45,7 @@ class HomeRoute extends StatelessWidget {
   }
 }
 
-List<MainListItem> getMainMenuItems3() {
+List<MainListItem> getMainMenuItems() {
   List<MainListItem> options = [
     ListHeaderItem("Word Pair Test Page", const WordPairRoute()),
     ListHeaderItem("Navigation Test", const SecondRoute()),
