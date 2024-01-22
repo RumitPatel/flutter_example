@@ -2,7 +2,7 @@ import 'package:android_flutter_examle/routes/bottom_navigation_bar_tab/tab_one_
 import 'package:android_flutter_examle/routes/bottom_navigation_bar_tab/tab_two_route.dart';
 import 'package:flutter/material.dart';
 
-import '../../utilities/app_utils.dart';
+import '../../utilities/theme_utils.dart';
 
 class BottomNavigationBarTab extends StatefulWidget {
   const BottomNavigationBarTab({super.key});

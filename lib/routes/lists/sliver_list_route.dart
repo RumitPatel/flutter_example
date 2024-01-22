@@ -106,7 +106,7 @@ class WeeklyForecastList extends StatelessWidget {
                   children: [
                     Text(DailyForecast._weekdays[index],
                         style: textTheme.labelLarge),
-                    Text(forecasts[index].description,
+                    Text(dailyForecast.description,
                         style: textTheme.labelMedium)
                   ],
                 ),
@@ -115,7 +115,7 @@ class WeeklyForecastList extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                  '${forecasts[index].lowTemp} | ${forecasts[index].highTemp} F'),
+                  '${dailyForecast.lowTemp} | ${dailyForecast.highTemp} F'),
             ),
           ],
         );

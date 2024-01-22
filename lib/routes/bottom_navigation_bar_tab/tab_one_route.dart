@@ -12,9 +12,9 @@ class _TabOneRoute extends State<TabOneRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Horizontal ListView'),
+        title: const Text('Tab 1'),
       ),
-      body: Center(child: const Text("This is a horizontal listview")),
+      body: const Center(child: Text("Welcome to Tab 1")),
     );
   }
 }

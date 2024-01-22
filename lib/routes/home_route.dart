@@ -51,13 +51,13 @@ List<MainListItem> getMainMenuItems() {
     ListHeaderItem("Navigation Test", const SecondRoute()),
     ListHeaderItem("Login Page Test", const TestLoginPageRoute()),
     ListHeaderItem("Bottom navigation tab", const BottomNavigationBarTab()),
-    ListHeaderItem("Logout", const LoginRoute()),
     ListHeaderItem("List Examples", const PendingRoute()),
     ListMessageItem("SingleChildScrollView", const PendingRoute()),
     ListMessageItem("ListView", const PendingRoute()),
     ListMessageItem("HorizontalListView", const HorizontalContainer()),
     ListMessageItem("SliverList", const SliverListRoute()),
     ListHeaderItem("State test with river pod", const StateTest()),
+    ListHeaderItem("Logout", const LoginRoute()),
   ];
 
   return options;
