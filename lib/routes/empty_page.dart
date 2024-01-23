@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({super.key});
+class EmptyPage extends StatelessWidget {
+  const EmptyPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Second Route'),
+        title: const Text('Empty Page'),
       ),
       body: Center(
         child: ElevatedButton(

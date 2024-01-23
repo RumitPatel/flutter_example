@@ -1,11 +1,11 @@
-import 'package:android_flutter_examle/routes/login_route.dart';
+import 'package:android_flutter_examle/routes/home_route.dart';
 import 'package:android_flutter_examle/utilities/constants.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,16 +13,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
-      child: MaterialApp(
-        title: appName,
-        theme: ThemeData(
+    return MaterialApp(
+      // create: (context) => MyAppState(),
+      // child: MaterialApp(
+      title: appName,
+      /*theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
-        ),
-        home: const LoginRoute(),
-      ),
+        ),*/
+      /*theme: ThemeData.dark(),*/
+      home: const HomeRoute(),
+      // ),
     );
   }
 }

@@ -1,15 +1,7 @@
-class MainListItem {
-  final String id;
-  final String name;
+import 'package:flutter/cupertino.dart';
 
-  MainListItem(this.id, this.name);
+abstract class MainListItem {
+  Widget? getItemWidget(BuildContext context);
 
-/*  MainListItem.fromJson(Map<String, dynamic> json)
-      : id = json['name'],
-        name = json['email'];
-
-  Map<String, dynamic> toJson() => {
-    'name': id,
-    'email': name,
-  };*/
+  Widget? getWidgetToNavigate(BuildContext context);
 }
