@@ -17,13 +17,21 @@ class ListMessageItem implements MainListItem {
   Widget getItemWidget(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(width: 28.0),
-        const SizedBox(
-          height: 40.0,
-          width: 40.0,
-          child: Icon(Icons.arrow_forward),
+        SizedBox(width: 28.0),
+        Expanded(
+          child: Card(
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 40.0,
+                  width: 40.0,
+                  child: Icon(Icons.arrow_forward),
+                ),
+                Text(title, style: Theme.of(context).textTheme.labelLarge)
+              ],
+            ),
+          ),
         ),
-        Text(title, style: Theme.of(context).textTheme.labelLarge)
       ],
     );
   }
