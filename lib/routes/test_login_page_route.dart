@@ -1,4 +1,4 @@
-import 'package:android_flutter_examle/routes/second_route.dart';
+import 'package:android_flutter_examle/routes/empty_page.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
@@ -51,7 +51,7 @@ class TestLoginPageRoute extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SecondRoute()),
+                  MaterialPageRoute(builder: (context) => const EmptyPage()),
                 );
               },
               icon: Icon(Icons.login),

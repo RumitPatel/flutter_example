@@ -1,5 +1,4 @@
-import 'package:android_flutter_examle/routes/pending_route.dart';
-import 'package:android_flutter_examle/routes/second_route.dart';
+import 'package:android_flutter_examle/routes/empty_page.dart';
 import 'package:android_flutter_examle/routes/state_test/state_test.dart';
 import 'package:android_flutter_examle/routes/test_login_page_route.dart';
 import 'package:android_flutter_examle/routes/word_pair_home_route.dart';
@@ -48,12 +47,12 @@ class HomeRoute extends StatelessWidget {
 List<MainListItem> getMainMenuItems() {
   List<MainListItem> options = [
     ListHeaderItem("Word Pair Test Page", const WordPairRoute()),
-    ListHeaderItem("Navigation Test", const SecondRoute()),
+    ListHeaderItem("Navigation Test", const EmptyPage()),
     ListHeaderItem("Login Page Test", const TestLoginPageRoute()),
     ListHeaderItem("Bottom navigation tab", const BottomNavigationBarTab()),
-    ListHeaderItem("List Examples", const PendingRoute()),
-    ListMessageItem("SingleChildScrollView", const PendingRoute()),
-    ListMessageItem("ListView", const PendingRoute()),
+    ListHeaderItem("List Examples", const EmptyPage()),
+    ListMessageItem("SingleChildScrollView", const EmptyPage()),
+    ListMessageItem("ListView", const EmptyPage()),
     ListMessageItem("HorizontalListView", const HorizontalContainer()),
     ListMessageItem("SliverList", const SliverListRoute()),
     ListHeaderItem("State test with river pod", const StateTest()),

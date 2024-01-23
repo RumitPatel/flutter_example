@@ -33,15 +33,10 @@ class SliverListRouteState extends State<SliverListRoute> {
               background: DecoratedBox(
                 position: DecorationPosition.foreground,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.center,
-                    colors: [
-                      Colors.teal[800]!,
-                      Colors.transparent
-                    ]
-                  )
-                ),
+                    gradient: LinearGradient(
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.center,
+                        colors: [Colors.teal[800]!, Colors.transparent])),
                 child: Image.network(
                   headerImage,
                   fit: BoxFit.cover,
@@ -68,7 +63,7 @@ class WeeklyForecastList extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate((BuildContext context, index) {
         final DailyForecast dailyForecast = forecasts[index];
-
+        final weekDay = DailyForecast._weekdays[index];
         return Row(
           children: [
             SizedBox(
@@ -104,8 +99,7 @@ class WeeklyForecastList extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(DailyForecast._weekdays[index],
-                        style: textTheme.labelLarge),
+                    Text(weekDay, style: textTheme.labelLarge),
                     Text(dailyForecast.description,
                         style: textTheme.labelMedium)
                   ],
