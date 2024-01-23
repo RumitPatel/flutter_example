@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/routes/empty_page.dart';
+import 'package:flutter_example/routes/flutter_layout_demo/flutter_layout_demo.dart';
 import 'package:flutter_example/routes/lists/listview_example_route.dart';
 import 'package:flutter_example/routes/state_test/state_test.dart';
 import 'package:flutter_example/routes/test_login_page_route.dart';
@@ -59,6 +60,7 @@ List<MainListItem> getMainMenuItems() {
     ListMessageItem("HorizontalListView", const HorizontalContainer()),
     ListMessageItem("SliverList", const SliverListRoute()),
     ListHeaderItem("State test with river pod", const StateTest()),
+    ListHeaderItem("Flutter layout demo", FlutterLayoutDemo()),
     ListHeaderItem("Logout", const LoginRoute()),
   ];
 
