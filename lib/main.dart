@@ -1,5 +1,5 @@
-import 'package:android_flutter_examle/routes/home_route.dart';
-import 'package:android_flutter_examle/utilities/constants.dart';
+import 'package:flutter_example/routes/home_route.dart';
+import 'package:flutter_example/utilities/constants.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
