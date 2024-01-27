@@ -12,6 +12,7 @@ import '../models/list_message_item.dart';
 import '../models/main_list_item.dart';
 import '../utilities/constants.dart';
 import 'bottom_navigation_bar_tab/bottom_navigation_bar_tab.dart';
+import 'getx_test/getx_test.dart';
 import 'lists/horizontal_container.dart';
 import 'lists/singlechild_scrollview_route.dart';
 import 'lists/sliver_list_route.dart';
@@ -61,6 +62,7 @@ List<MainListItem> getMainMenuItems() {
     ListMessageItem("SliverList", const SliverListRoute()),
     ListHeaderItem("State test with river pod", const StateTest()),
     ListHeaderItem("Flutter layout demo", FlutterLayoutDemo()),
+    ListHeaderItem("GetX Example", const GetXTest()),
     ListHeaderItem("Logout", const LoginRoute()),
   ];
 
