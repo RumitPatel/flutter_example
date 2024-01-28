@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../getx_test/my_controller.dart';
+import 'controllers/my_controller.dart';
 
 class StateTestWithTasks extends StatelessWidget {
   const StateTestWithTasks({super.key});

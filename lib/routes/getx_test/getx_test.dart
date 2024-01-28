@@ -1,7 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_example/routes/getx_test/my_controller.dart';
-import 'package:flutter_example/routes/state_test/state_test_with_tasks.dart';
+import 'package:flutter_example/routes/getx_test/controllers/my_controller.dart';
+import 'package:flutter_example/routes/getx_test/state_test_with_tasks.dart';
 import 'package:get/get.dart';
 
 class GetXTest extends StatefulWidget {

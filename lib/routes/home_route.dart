@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/routes/empty_page.dart';
 import 'package:flutter_example/routes/flutter_layout_demo/flutter_layout_demo.dart';
+import 'package:flutter_example/routes/getx_test/getx_test.dart';
 import 'package:flutter_example/routes/lists/listview_example_route.dart';
-import 'package:flutter_example/routes/state_test/state_test_with_tasks.dart';
 import 'package:flutter_example/routes/test_login_page_route.dart';
-import 'package:flutter_example/routes/getx_test.dart';
 import 'package:flutter_example/utilities/app_utils.dart';
 
 import '../models/list_header_item.dart';
