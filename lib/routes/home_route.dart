@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_example/routes/empty_page.dart';
 import 'package:flutter_example/routes/flutter_layout_demo/flutter_layout_demo.dart';
 import 'package:flutter_example/routes/lists/listview_example_route.dart';
-import 'package:flutter_example/routes/state_test/state_test.dart';
+import 'package:flutter_example/routes/state_test/state_test_with_tasks.dart';
 import 'package:flutter_example/routes/test_login_page_route.dart';
-import 'package:flutter_example/routes/word_pair_home_route.dart';
+import 'package:flutter_example/routes/getx_test.dart';
 import 'package:flutter_example/utilities/app_utils.dart';
 
 import '../models/list_header_item.dart';
@@ -49,7 +49,7 @@ class HomeRoute extends StatelessWidget {
 
 List<MainListItem> getMainMenuItems() {
   List<MainListItem> options = [
-    ListHeaderItem("Word Pair Test Page", const WordPairRoute()),
+    ListHeaderItem("GetX Test", const GetXTest()),
     ListHeaderItem("Navigation Test", const EmptyPage()),
     ListHeaderItem("Login Page Test", const TestLoginPageRoute()),
     ListHeaderItem("Bottom navigation tab", const BottomNavigationBarTab()),
@@ -59,7 +59,6 @@ List<MainListItem> getMainMenuItems() {
     ListMessageItem("ListView", const ListViewExampleRoute()),
     ListMessageItem("HorizontalListView", const HorizontalContainer()),
     ListMessageItem("SliverList", const SliverListRoute()),
-    ListHeaderItem("GetX State test of tasklist", const StateTest()),
     ListHeaderItem("Flutter layout demo", FlutterLayoutDemo()),
     ListHeaderItem("Logout", const LoginRoute()),
   ];

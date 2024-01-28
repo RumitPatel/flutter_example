@@ -3,15 +3,15 @@ import 'package:get/get.dart';
 
 import '../getx_test/my_controller.dart';
 
-class StateTest extends StatelessWidget {
-  const StateTest({super.key});
+class StateTestWithTasks extends StatelessWidget {
+  const StateTestWithTasks({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         title: Text("Test State with Getx"),
-      ),
+      ),*/
       body: SafeArea(
         child: Column(
           children: [

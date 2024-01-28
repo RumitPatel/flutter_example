@@ -1,6 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_example/routes/state_test/state_test.dart';
+import 'package:flutter_example/routes/state_test/state_test_with_tasks.dart';
 import 'package:get/get.dart';
 
 import '../../utilities/app_utils.dart';
