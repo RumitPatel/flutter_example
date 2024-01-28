@@ -1,5 +1,5 @@
-import 'package:android_flutter_examle/routes/bottom_navigation_bar_tab/tab_one_route.dart';
-import 'package:android_flutter_examle/routes/bottom_navigation_bar_tab/tab_two_route.dart';
+import 'package:flutter_example/routes/bottom_navigation_bar_tab/tab_one_route.dart';
+import 'package:flutter_example/routes/bottom_navigation_bar_tab/tab_two_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../utilities/theme_utils.dart';

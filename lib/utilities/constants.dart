@@ -17,3 +17,5 @@ const String homeScreenTitle = "Home Screen";
 
 const String staticSqureImageUrl =
     'https://dartpad-workshops-io2021.web.app/getting_started_with_slivers/assets/day_0.jpeg';
+
+const String lorumIpsum1 = "Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps.";

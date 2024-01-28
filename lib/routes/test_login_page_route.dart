@@ -1,4 +1,4 @@
-import 'package:android_flutter_examle/routes/empty_page.dart';
+import 'package:flutter_example/routes/empty_page.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';

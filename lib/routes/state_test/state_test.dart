@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 
-final _taskProvider = StateNotifierProvider<TaskNotifier, List<Task>>((ref) {
-  return TaskNotifier(tasks: [
-    Task(id: 1, label: "Load rocket with supplies"),
-    Task(id: 2, label: "Launch rocket"),
-    Task(id: 3, label: "Circle the home planet"),
-    Task(id: 4, label: "Head out to the first moon"),
-    Task(id: 5, label: "Launch moon lander #1"),
-  ]);
-});
+import '../getx_test/my_controller.dart';
 
 class StateTest extends StatelessWidget {
   const StateTest({super.key});
@@ -18,70 +10,71 @@ class StateTest extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Test State with Riverpod"),
+        title: Text("Test State with Getx"),
       ),
       body: SafeArea(
         child: Column(
-          children: [ProgressPart(), TaskList()],
+          children: [
+            ProgressPart(),
+            TaskList(),
+          ],
         ),
       ),
     );
   }
 }
 
-class TaskList extends ConsumerWidget {
+class TaskList extends StatelessWidget {
   const TaskList({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    var tasks = ref.watch(_taskProvider);
-
-    return Column(
-      children: tasks
-          .map(
-            (task) => TaskItem(task: task),
-          )
-          .toList(),
-    );
+  Widget build(BuildContext context) {
+    var c = Get.put(MyController());
+    return Obx(() => Column(
+          children: c.tasks
+              .map(
+                (task) => TaskItem(task: task),
+              )
+              .toList(),
+        ));
   }
 }
 
-class TaskItem extends ConsumerWidget {
+class TaskItem extends StatelessWidget {
   final Task task;
 
   TaskItem({super.key, required this.task});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
+    var c = Get.put(MyController());
     return Row(
       children: [
         Checkbox(
             value: task.completed,
-            onChanged: (newValue) =>
-                ref.read(_taskProvider.notifier).toggle(task.id)),
+            onChanged: (newValue) => c.toggleTaskChecked(task.id)),
         Text(task.label)
       ],
     );
   }
 }
 
-class ProgressPart extends ConsumerWidget {
+class ProgressPart extends StatelessWidget {
   const ProgressPart({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    var tasks = ref.watch(_taskProvider);
-
-    var numCompletedTasks = tasks.where((task) {
-      return task.completed == true;
-    }).length;
+  Widget build(BuildContext context) {
+    var c = Get.put(MyController());
 
     return Column(
       children: [
         Text("The progress indicates how far you are completing task"),
-        LinearProgressIndicator(value: numCompletedTasks / tasks.length)
+        Obx(
+          () => LinearProgressIndicator(
+              value: c.getCheckedTasks() / c.tasks.length),
+        ),
       ],
     );
   }
@@ -100,25 +93,5 @@ class Task {
         id: id ?? this.id,
         label: label ?? this.label,
         completed: completed ?? this.completed);
-  }
-}
-
-class TaskNotifier extends StateNotifier<List<Task>> {
-  TaskNotifier({
-    tasks,
-  }) : super(tasks);
-
-  void add(Task task) {
-    state = [...state, task];
-  }
-
-  void toggle(int taskId) {
-    state = [
-      for (final item in state)
-        if (taskId == item.id)
-          item.copyWith(completed: !item.completed)
-        else
-          item
-    ];
   }
 }

@@ -1,4 +1,4 @@
-import 'package:android_flutter_examle/utilities/app_utils.dart';
+import 'package:flutter_example/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';

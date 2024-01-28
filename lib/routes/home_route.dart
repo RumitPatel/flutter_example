@@ -1,10 +1,11 @@
-import 'package:android_flutter_examle/routes/empty_page.dart';
-import 'package:android_flutter_examle/routes/lists/listview_example_route.dart';
-import 'package:android_flutter_examle/routes/state_test/state_test.dart';
-import 'package:android_flutter_examle/routes/test_login_page_route.dart';
-import 'package:android_flutter_examle/routes/word_pair_home_route.dart';
-import 'package:android_flutter_examle/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_example/routes/empty_page.dart';
+import 'package:flutter_example/routes/flutter_layout_demo/flutter_layout_demo.dart';
+import 'package:flutter_example/routes/lists/listview_example_route.dart';
+import 'package:flutter_example/routes/state_test/state_test.dart';
+import 'package:flutter_example/routes/test_login_page_route.dart';
+import 'package:flutter_example/routes/word_pair_home_route.dart';
+import 'package:flutter_example/utilities/app_utils.dart';
 
 import '../models/list_header_item.dart';
 import '../models/list_message_item.dart';
@@ -53,11 +54,13 @@ List<MainListItem> getMainMenuItems() {
     ListHeaderItem("Login Page Test", const TestLoginPageRoute()),
     ListHeaderItem("Bottom navigation tab", const BottomNavigationBarTab()),
     ListHeaderItem("List Examples", const EmptyPage()),
-    ListMessageItem("SingleChildScrollView", const SingleChildScrollViewRoute()),
+    ListMessageItem(
+        "SingleChildScrollView", const SingleChildScrollViewRoute()),
     ListMessageItem("ListView", const ListViewExampleRoute()),
     ListMessageItem("HorizontalListView", const HorizontalContainer()),
     ListMessageItem("SliverList", const SliverListRoute()),
-    ListHeaderItem("State test with river pod", const StateTest()),
+    ListHeaderItem("GetX State test of tasklist", const StateTest()),
+    ListHeaderItem("Flutter layout demo", FlutterLayoutDemo()),
     ListHeaderItem("Logout", const LoginRoute()),
   ];
 
