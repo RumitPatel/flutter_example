@@ -1,9 +1,9 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_example/routes/state_test/state_test.dart';
+import 'package:flutter_example/routes/getx_test/state_test_with_tasks.dart';
 import 'package:get/get.dart';
 
-import '../../utilities/app_utils.dart';
+import '../../../utilities/app_utils.dart';
 
 class MyController extends GetxController {
   var current = WordPair.random().obs;
@@ -52,7 +52,6 @@ class MyController extends GetxController {
   }
 
   getFavouriteIcon() {
-    IconData icon;
     if (favourites.contains(current.value)) {
       return Icons.favorite;
     } else {
