@@ -1,13 +1,14 @@
 import 'dart:core';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-
 void printI(String message) {
-  const String m_tag = "####";
-
-  print('$m_tag $message');
+  const String mTag = "####";
+  if (kDebugMode) {
+    print('$mTag $message');
+  }
 }
 
 void snack(context, message) {

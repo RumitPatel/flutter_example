@@ -9,6 +9,7 @@ import '../models/list_header_item.dart';
 import '../models/list_message_item.dart';
 import '../models/main_list_item.dart';
 import '../utilities/constants.dart';
+import 'api_call_using_http_library/api_call_using_http_library.dart';
 import 'bottom_navigation_bar_tab/bottom_navigation_bar_tab.dart';
 import 'lists/horizontal_container.dart';
 import 'lists/singlechild_scrollview_route.dart';
@@ -41,7 +42,7 @@ class HomeRoute extends StatelessWidget {
   }
 
   void myFunctionToPass() {
-    print('Function passed to the constructor is executed!');
+    printI('Function passed to the constructor is executed!');
   }
 }
 
@@ -57,7 +58,8 @@ List<MainListItem> getMainMenuItems() {
     ListMessageItem("ListView", const ListViewExampleRoute()),
     ListMessageItem("HorizontalListView", const HorizontalContainer()),
     ListMessageItem("SliverList", const SliverListRoute()),
-    ListHeaderItem("Flutter layout demo", FlutterLayoutDemo()),
+    ListHeaderItem("Flutter layout demo", const FlutterLayoutDemo()),
+    ListHeaderItem("API call using Http library", const ApiCallUsingHttp()),
     ListHeaderItem("Logout", const LoginRoute()),
   ];
 
