@@ -3,7 +3,6 @@ import 'package:flutter_example/routes/empty_page.dart';
 import 'package:flutter_example/routes/flutter_layout_demo/flutter_layout_demo.dart';
 import 'package:flutter_example/routes/getx_test/getx_test.dart';
 import 'package:flutter_example/routes/lists/listview_example_route.dart';
-import 'package:flutter_example/routes/test_login_page_route.dart';
 import 'package:flutter_example/utilities/app_utils.dart';
 
 import '../models/list_header_item.dart';
@@ -50,7 +49,7 @@ List<MainListItem> getMainMenuItems() {
   List<MainListItem> options = [
     ListHeaderItem("GetX Test", const GetXTest()),
     ListHeaderItem("Navigation Test", const EmptyPage()),
-    ListHeaderItem("Login Page Test", const TestLoginPageRoute()),
+    ListHeaderItem("Login Page Test", const LoginRoute()),
     ListHeaderItem("Bottom navigation tab", const BottomNavigationBarTab()),
     ListHeaderItem("List Examples", const EmptyPage()),
     ListMessageItem(
