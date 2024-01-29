@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_example/utilities/app_utils.dart';
-import 'package:http/http.dart' as http;
 
 import 'http_api_utils.dart';
 import 'model/album_info.dart';
@@ -47,7 +44,7 @@ class _MyBodyState extends State<MyBody> {
           onPressed: () {
             _callAPI();
           },
-          child: const Text('Click me!'),
+          child: const Text('Call API!'),
         ),
         FutureBuilder<AlbumInfo>(
           future: _futureAlbum,
@@ -57,7 +54,7 @@ class _MyBodyState extends State<MyBody> {
               return Text(
                   'userId: ${snapshot.data!.userId}\nid: ${snapshot.data!.id}\ntitle: ${snapshot.data!.title}, ');
             } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
+              return Text('Error: ${snapshot.error}');
             }
 
             // By default, show a loading spinner.
@@ -72,4 +69,3 @@ class _MyBodyState extends State<MyBody> {
     _futureAlbum = fetchAlbum();
   }
 }
-
