@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_example/routes/api_call_using_http_library/model/photo_info.dart';
 import 'package:flutter_example/utilities/app_utils.dart';
 
 import 'http_api_utils.dart';
@@ -50,7 +51,6 @@ class _MyBodyState extends State<MyBody> {
           future: _futureAlbum,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              printI('snapshot.hasData');
               return Text(
                   'userId: ${snapshot.data!.userId}\nid: ${snapshot.data!.id}\ntitle: ${snapshot.data!.title}, ');
             } else if (snapshot.hasError) {
@@ -60,12 +60,50 @@ class _MyBodyState extends State<MyBody> {
             // By default, show a loading spinner.
             return const CircularProgressIndicator();
           },
-        )
+        ),
+        FutureBuilder<List<PhotoInfo>>(
+          future: fetchPhotos(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Center(
+                child: Text('An error has occurred!'),
+              );
+            } else if (snapshot.hasData) {
+              printI('snapshot.hasData${snapshot.data.toString()}');
+              return Expanded(
+                child: PhotosList(photos: snapshot.data!),
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
       ],
     ));
   }
 
   void _callAPI() {
     _futureAlbum = fetchAlbum();
+  }
+}
+
+class PhotosList extends StatelessWidget {
+  const PhotosList({super.key, required this.photos});
+
+  final List<PhotoInfo> photos;
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+      itemCount: photos.length,
+      itemBuilder: (context, index) {
+        return Image.network(photos[index].thumbnailUrl);
+      },
+    );
   }
 }
