@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_example/utilities/app_utils.dart';
 import 'package:http/http.dart' as http;
 
+import 'http_api_utils.dart';
 import 'model/album_info.dart';
 
 class ApiCallUsingHttp extends StatelessWidget {
@@ -68,18 +69,7 @@ class _MyBodyState extends State<MyBody> {
   }
 
   void _callAPI() {
-    _futureAlbum = _fetchAlbum();
+    _futureAlbum = fetchAlbum();
   }
 }
 
-Future<AlbumInfo> _fetchAlbum() async {
-  final response = await http
-      .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
-
-  if (response.statusCode == 200) {
-    return AlbumInfo.fromJson(
-        jsonDecode(response.body) as Map<String, dynamic>);
-  } else {
-    throw Exception('Failed to load album');
-  }
-}
