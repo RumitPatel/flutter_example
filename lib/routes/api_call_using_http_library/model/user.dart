@@ -9,11 +9,13 @@ part 'user.g.dart';
 @JsonSerializable(explicitToJson: true)
 class User {
   User(
+    this.id,
     this.name,
     this.email,
     this.address,
   );
 
+  int id;
   String name;
   String email;
   Address address;

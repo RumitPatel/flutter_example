@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_example/routes/api_call_using_dio_library/api_call_using_dio_library.dart';
 import 'package:flutter_example/routes/empty_page.dart';
 import 'package:flutter_example/routes/flutter_layout_demo/flutter_layout_demo.dart';
 import 'package:flutter_example/routes/getx_test/getx_test.dart';
@@ -9,6 +10,7 @@ import '../models/list_header_item.dart';
 import '../models/list_message_item.dart';
 import '../models/main_list_item.dart';
 import '../utilities/constants.dart';
+import 'api_call_using_dio_library/dio_post_example.dart';
 import 'api_call_using_http_library/api_call_using_http_library.dart';
 import 'bottom_navigation_bar_tab/bottom_navigation_bar_tab.dart';
 import 'lists/horizontal_container.dart';
@@ -60,6 +62,8 @@ List<MainListItem> getMainMenuItems() {
     ListMessageItem("SliverList", const SliverListRoute()),
     ListHeaderItem("Flutter layout demo", const FlutterLayoutDemo()),
     ListHeaderItem("API call using Http library", const ApiCallUsingHttp()),
+    ListHeaderItem("API call using Dio library", const ApiCallUsingDio()),
+    ListMessageItem("Dio Post API example", const DioPostExample()),
     ListHeaderItem("Logout", const LoginRoute()),
   ];
 

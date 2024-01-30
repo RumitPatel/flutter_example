@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void printI(String message) {
   const String mTag = "####";
@@ -28,4 +29,8 @@ void navigateTo(context, routeToBeNavigated) {
 
 int getRandomInt() {
   return Random().nextInt(90);
+}
+
+void showSnackBottom(title, message) {
+  Get.snackbar(title, message, snackPosition: SnackPosition.BOTTOM);
 }
