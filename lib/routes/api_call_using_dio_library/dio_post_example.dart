@@ -37,15 +37,15 @@ class _DioPostExampleState extends State<DioPostExample> {
   final TextEditingController emailController = TextEditingController();
 
   void addUser() async {
-    updateLoadingStatus(true, '');
-
     String name = nameController.text;
     String email = emailController.text;
 
     if (name.isEmpty || email.isEmpty) {
-      updateLoadingStatus(false, 'Name and Email should not be empty.');
+      showSnackBottom('Error', 'Name and Email should not be empty.');
       return;
     }
+
+    updateLoadingStatus(true, '');
 
     printI('Going to add new user:$name\nemail:$email');
     try {
