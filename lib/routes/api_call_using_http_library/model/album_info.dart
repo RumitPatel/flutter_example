@@ -1,7 +1,7 @@
 class AlbumInfo {
-  final int userId;
-  final int id;
-  final String title;
+  final int? userId;
+  final int? id;
+  final String? title;
 
   const AlbumInfo({
     required this.userId,

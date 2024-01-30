@@ -1,9 +1,9 @@
 class PhotoInfo {
-  final int albumId;
-  final int id;
-  final String title;
-  final String url;
-  final String thumbnailUrl;
+  final int? albumId;
+  final int? id;
+  final String? title;
+  final String? url;
+  final String? thumbnailUrl;
 
   const PhotoInfo({
     required this.albumId,
