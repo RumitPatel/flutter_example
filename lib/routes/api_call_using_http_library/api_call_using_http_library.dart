@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/routes/api_call_using_http_library/model/photo_info.dart';
-import 'package:flutter_example/utilities/app_utils.dart';
+import 'package:flutter_example/routes/api_call_using_http_library/model/user.dart';
 
 import 'http_api_utils.dart';
 import 'model/album_info.dart';
@@ -69,9 +69,26 @@ class _MyBodyState extends State<MyBody> {
                 child: Text('An error has occurred!'),
               );
             } else if (snapshot.hasData) {
-              printI('snapshot.hasData${snapshot.data.toString()}');
               return Expanded(
                 child: PhotosList(photos: snapshot.data!),
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
+        FutureBuilder<List<User>>(
+          future: fetchUsers(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Center(
+                child: Text('An error has occurred!'),
+              );
+            } else if (snapshot.hasData) {
+              return Expanded(
+                child: UsersList(users: snapshot.data!),
               );
             } else {
               return const Center(
@@ -102,7 +119,32 @@ class PhotosList extends StatelessWidget {
       ),
       itemCount: photos.length,
       itemBuilder: (context, index) {
-        return Image.network(photos[index].thumbnailUrl);
+        return Column(
+          children: [
+            Text('Id: ${photos[index].id}'),
+            Image.network(photos[index].thumbnailUrl),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class UsersList extends StatelessWidget {
+  const UsersList({super.key, required this.users});
+
+  final List<User> users;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: users.length,
+      itemBuilder: (context, index) {
+        var user = users[index];
+        return Card(
+          child: Text(
+              'Name: ${user.name}\nEmail: ${user.email}\nAddress:${user.address.city}, ${user.address.street},${user.address.suite}, ${user.address.zipcode}'),
+        );
       },
     );
   }
