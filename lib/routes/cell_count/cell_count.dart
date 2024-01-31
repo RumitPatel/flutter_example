@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_example/utilities/app_utils.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../utilities/constants.dart';
 import '../api_call_using_http_library/ui/progress_part.dart';
 
 class CellCount extends StatefulWidget {
@@ -22,7 +21,7 @@ class _CellCountState extends State<CellCount> {
   String errorMsg = '';
   final ImagePicker _picker = ImagePicker();
 
-  XFile? _image;
+  File? _image;
 
   @override
   void initState() {
@@ -33,11 +32,14 @@ class _CellCountState extends State<CellCount> {
   void setupInterceptors() {
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
-        printI('Sending request to: ${options.uri}');
+        var fields = (options.data as FormData).fields;
+        printI(
+            'Sending request to: ${options.uri}\nfieldsCount:${fields.length}\nfields:${fields}\nextra:${options.extra}\nqueryParameters:${options.queryParameters}');
         handler.next(options);
       },
       onResponse: (response, handler) {
-        printI('Received response with status: ${response.statusCode}');
+        printI(
+            'Received response with status: ${response.statusCode}\ndata=${response.data}\nextra=${response.extra}');
         handler.next(response);
       },
       onError: (error, handler) {
@@ -45,30 +47,76 @@ class _CellCountState extends State<CellCount> {
         handler.next(error);
       },
     ));
+
+/*    dio.interceptors.add(
+      LogInterceptor(
+        logPrint: (o) => debugPrint('$mTag ${o.toString()}'),
+      ),
+    );*/
   }
 
-  void uploadImage() async {
+  void _uploadImage() async {
+    printI('before API call: path:${_image!.path}, name:${'_image!.name'}');
+
     updateLoadingStatus(true, '');
     try {
       final formData = FormData.fromMap({
         'name': 'dio',
         'date': DateTime.now().toIso8601String(),
-        'file': await MultipartFile.fromFile(staticImgPath1,
-            filename: 'upload1.txt'),
+        'image_file': await MultipartFile.fromFile(
+          _image!.path,
+          filename: '_image!.name',
+        ),
         /*'files': [
           await MultipartFile.fromFile('./text1.txt', filename: 'text1.txt'),
           await MultipartFile.fromFile('./text2.txt', filename: 'text2.txt'),
         ]*/
       });
+      printI('formData before API call: ${formData.fields.toString()}');
       final response = await dio
           .post('https://demos.neuramonks.com:8000/blood_cell', data: formData);
       printI('Upload image API response: ${response.toString()}');
       updateLoadingStatus(false, '');
     } catch (e) {
-      printI('Error adding user: $e');
-      updateLoadingStatus(false, 'Error adding user: $e');
+      printI('Error cell counting: $e');
+      updateLoadingStatus(false, 'Error cell counting: $e');
     }
   }
+
+  Future<void> _uploadImage3(File? imageFile) async {
+    try {
+      final dio = Dio();
+      final String uploadUrl = 'https://demos.neuramonks.com:8000/blood_cell';
+
+      FormData formData = FormData.fromMap({
+        'image_file': await MultipartFile.fromFile(
+          imageFile!.path,
+          filename: 'uploaded_image',
+        ),
+      });
+
+      final response = await dio.post(uploadUrl, data: formData);
+
+      if (response.statusCode == 200) {
+        printI('Image uploaded successfully!');
+      } else {
+        printI('Failed to upload image. Status code: ${response.statusCode}');
+      }
+    } catch (error) {
+      printI('Error uploading image: $error');
+    }
+  }
+
+/*  Future<String> uploadImage2(File file) async {
+    String fileName = file.path.split('/').last;
+    FormData formData = FormData.fromMap({
+      "image_file":
+      await MultipartFile.fromFile(file.path, filename:fileName),
+    });
+    printI('formData before API call: ${formData.fields.toString()}');
+    final response = await dio.post("https://demos.neuramonks.com:8000/blood_cell", data: formData);
+    return response.data['id'];
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +134,9 @@ class _CellCountState extends State<CellCount> {
                       Image.file(File(_image!.path)),
                       ElevatedButton(
                         onPressed: () {
-                          uploadImage();
+                          _uploadImage();
+                          // uploadImage2(File(_image!.path));
+                          // _uploadImage3(_image);
                         },
                         child: Text('Upload selected image.'),
                       ),
@@ -94,21 +144,23 @@ class _CellCountState extends State<CellCount> {
                   ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: getImage,
+        onPressed: _getImage,
         tooltip: 'Pick Image',
         child: const Icon(Icons.add_a_photo),
       ),
     );
   }
 
-  Future getImage() async {
+  Future _getImage() async {
     try {
-      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+      final XFile? pickedFile =
+          await _picker.pickImage(source: ImageSource.gallery);
 
-      if (image != null) {
-        printI('selected image:${image.path}');
+      if (pickedFile != null) {
+        printI('selected image:${pickedFile.path}');
         setState(() {
-          _image = image;
+          _image = File(pickedFile.path);
+          printI('selected image:${_image?.path}');
         });
       } else {
         showSnackBottom('Image picker error!',
