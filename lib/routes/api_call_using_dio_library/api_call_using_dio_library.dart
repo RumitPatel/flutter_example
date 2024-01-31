@@ -73,10 +73,9 @@ class ListPart extends StatelessWidget {
       child: ListView.builder(
         itemCount: users.length,
         itemBuilder: (context, index) {
-          return ListTile(title: Text(users[index].name));
+          return ListTile(title: Text(users[index].name ?? ''));
         },
       ),
     );
   }
 }
-

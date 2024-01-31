@@ -15,10 +15,10 @@ class User {
     this.address,
   );
 
-  int id;
-  String name;
-  String email;
-  Address address;
+  int? id;
+  String? name;
+  String? email;
+  Address? address;
 
   /// A necessary factory constructor for creating a new User instance
   /// from a map. Pass the map to the generated `_$UserFromJson()` constructor.

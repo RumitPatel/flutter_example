@@ -8,6 +8,8 @@ import 'package:http/http.dart' as http;
 
 import 'model/album_info.dart';
 
+const String baseURLCellCounting =
+    'https://demos.neuramonks.com:8000/blood_cell';
 const String baseURLJPHolder = 'https://jsonplaceholder.typicode.com/';
 
 Future<AlbumInfo> fetchAlbum() async {

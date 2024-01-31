@@ -3,24 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../../utilities/app_utils.dart';
 import '../api_call_using_http_library/http_api_utils.dart';
+import '../api_call_using_http_library/model/user.dart';
 import '../api_call_using_http_library/ui/error_msg_part.dart';
 import '../api_call_using_http_library/ui/progress_part.dart';
-
-class User {
-  final int id;
-  final String name;
-  final String email;
-
-  User({required this.id, required this.name, required this.email});
-
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      id: json['id'],
-      name: json['name'],
-      email: json['email'],
-    );
-  }
-}
 
 class DioPostExample extends StatefulWidget {
   const DioPostExample({super.key});
@@ -37,15 +22,15 @@ class _DioPostExampleState extends State<DioPostExample> {
   final TextEditingController emailController = TextEditingController();
 
   void addUser() async {
-    updateLoadingStatus(true, '');
-
     String name = nameController.text;
     String email = emailController.text;
 
     if (name.isEmpty || email.isEmpty) {
-      updateLoadingStatus(false, 'Name and Email should not be empty.');
+      showSnackBottom('Error', 'Name and Email should not be empty.');
       return;
     }
+
+    updateLoadingStatus(true, '');
 
     printI('Going to add new user:$name\nemail:$email');
     try {

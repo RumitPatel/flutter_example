@@ -122,7 +122,7 @@ class PhotosList extends StatelessWidget {
         return Column(
           children: [
             Text('Id: ${photos[index].id}'),
-            Image.network(photos[index].thumbnailUrl),
+            Image.network(photos[index].thumbnailUrl ?? ''),
           ],
         );
       },
@@ -143,7 +143,7 @@ class UsersList extends StatelessWidget {
         var user = users[index];
         return Card(
           child: Text(
-              'Name: ${user.name}\nEmail: ${user.email}\nAddress:${user.address.city}, ${user.address.street},${user.address.suite}, ${user.address.zipcode}'),
+              'Name: ${user.name}\nEmail: ${user.email}\nAddress:${user.address?.city}, ${user.address?.street},${user.address?.suite}, ${user.address?.zipcode}'),
         );
       },
     );

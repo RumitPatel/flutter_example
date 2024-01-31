@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/routes/api_call_using_dio_library/api_call_using_dio_library.dart';
+import 'package:flutter_example/routes/cell_count/cell_count.dart';
 import 'package:flutter_example/routes/empty_page.dart';
 import 'package:flutter_example/routes/flutter_layout_demo/flutter_layout_demo.dart';
 import 'package:flutter_example/routes/getx_test/getx_test.dart';
@@ -13,6 +14,7 @@ import '../utilities/constants.dart';
 import 'api_call_using_dio_library/dio_post_example.dart';
 import 'api_call_using_http_library/api_call_using_http_library.dart';
 import 'bottom_navigation_bar_tab/bottom_navigation_bar_tab.dart';
+import 'image_picker/image_picker.dart';
 import 'lists/horizontal_container.dart';
 import 'lists/singlechild_scrollview_route.dart';
 import 'lists/sliver_list_route.dart';
@@ -50,6 +52,7 @@ class HomeRoute extends StatelessWidget {
 
 List<MainListItem> getMainMenuItems() {
   List<MainListItem> options = [
+    ListHeaderItem("Cell count demo", const CellCount()),
     ListHeaderItem("GetX Test", const GetXTest()),
     ListHeaderItem("Navigation Test", const EmptyPage()),
     ListHeaderItem("Login Page Test", const LoginRoute()),
@@ -64,6 +67,7 @@ List<MainListItem> getMainMenuItems() {
     ListHeaderItem("API call using Http library", const ApiCallUsingHttp()),
     ListHeaderItem("API call using Dio library", const ApiCallUsingDio()),
     ListMessageItem("Dio Post API example", const DioPostExample()),
+    ListHeaderItem("Image Picker", const ImagePickerDemo()),
     ListHeaderItem("Logout", const LoginRoute()),
   ];
 
