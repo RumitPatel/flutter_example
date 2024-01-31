@@ -36,7 +36,7 @@ class _CellCountState extends State<CellCount> {
       onRequest: (options, handler) {
         var fields = (options.data as FormData).fields;
         printI(
-            'Sending request to: ${options.uri}\nfieldsCount:${fields.length}\nfields:${fields}\nextra:${options.extra}\nqueryParameters:${options.queryParameters}');
+            'Sending request to: ${options.uri}\nfieldsCount:${fields.length}\nfields:$fields\nextra:${options.extra}\nqueryParameters:${options.queryParameters}');
         handler.next(options);
       },
       onResponse: (response, handler) {
@@ -173,7 +173,6 @@ class _LocalImageSelectedPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var dddd = '';
     return Column(
       children: [
         Image.file(imgFile!),
@@ -198,16 +197,16 @@ class _ImageResultPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String imgUrl = cellCounting?.image_url ?? '';
-    int? RBC = cellCounting?.RBC;
-    int? WBC = cellCounting?.WBC;
-    int? Platelets = cellCounting?.Platelets;
+    int? rbc = cellCounting?.RBC;
+    int? wbc = cellCounting?.WBC;
+    int? platelets = cellCounting?.Platelets;
 
     return Column(
       children: [
         Image.network(imgUrl),
-        Text('RBC: $RBC'),
-        Text('WBC: $WBC'),
-        Text('Platelets: $Platelets'),
+        Text('RBC: $rbc'),
+        Text('WBC: $wbc'),
+        Text('Platelets: $platelets'),
       ],
     );
   }
