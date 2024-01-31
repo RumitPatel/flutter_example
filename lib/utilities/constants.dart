@@ -20,3 +20,11 @@ const String staticSqureImageUrl =
 
 const String lorumIpsum1 =
     "Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps. Lake Oeschinen lies at the foot of the Blumisalp in the bernes Alps.";
+
+enum PState {
+  initial,
+  progress,
+  data,
+  error,
+  imageSelectionDone,
+}
