@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/routes/api_call_using_dio_library/api_call_using_dio_library.dart';
+import 'package:flutter_example/routes/cell_count/cell_count.dart';
 import 'package:flutter_example/routes/empty_page.dart';
 import 'package:flutter_example/routes/flutter_layout_demo/flutter_layout_demo.dart';
 import 'package:flutter_example/routes/getx_test/getx_test.dart';
@@ -51,6 +52,7 @@ class HomeRoute extends StatelessWidget {
 
 List<MainListItem> getMainMenuItems() {
   List<MainListItem> options = [
+    ListHeaderItem("Cell count demo", const CellCount()),
     ListHeaderItem("GetX Test", const GetXTest()),
     ListHeaderItem("Navigation Test", const EmptyPage()),
     ListHeaderItem("Login Page Test", const LoginRoute()),
