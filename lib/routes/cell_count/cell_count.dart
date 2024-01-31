@@ -2,13 +2,15 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_example/routes/api_call_using_http_library/model/cell_counting.dart';
 import 'package:flutter_example/utilities/app_utils.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../api_call_using_http_library/http_api_utils.dart';
 import '../api_call_using_http_library/ui/progress_part.dart';
 
 class CellCount extends StatefulWidget {
-  const CellCount({Key? key}) : super(key: key);
+  const CellCount({super.key});
 
   @override
   _CellCountState createState() => _CellCountState();
@@ -17,11 +19,12 @@ class CellCount extends StatefulWidget {
 class _CellCountState extends State<CellCount> {
   Dio dio = Dio();
 
-  bool isLoading = false;
-  String errorMsg = '';
-  final ImagePicker _picker = ImagePicker();
+  bool _isLoading = false;
+  String _errorMsg = '';
 
-  File? _image;
+  XFile? _imageXFile;
+  CellCounting? _cellCounting;
+  bool gotResult = false;
 
   @override
   void initState() {
@@ -56,67 +59,41 @@ class _CellCountState extends State<CellCount> {
   }
 
   void _uploadImage() async {
-    printI('before API call: path:${_image!.path}, name:${'_image!.name'}');
-
-    updateLoadingStatus(true, '');
+    _updateLoadingStatus(true, '');
     try {
       final formData = FormData.fromMap({
-        'name': 'dio',
-        'date': DateTime.now().toIso8601String(),
+        'name': 'rum_test',
         'image_file': await MultipartFile.fromFile(
-          _image!.path,
-          filename: '_image!.name',
+          _imageXFile!.path,
+          filename: _imageXFile!.path,
         ),
         /*'files': [
           await MultipartFile.fromFile('./text1.txt', filename: 'text1.txt'),
           await MultipartFile.fromFile('./text2.txt', filename: 'text2.txt'),
         ]*/
       });
-      printI('formData before API call: ${formData.fields.toString()}');
-      final response = await dio
-          .post('https://demos.neuramonks.com:8000/blood_cell', data: formData);
-      printI('Upload image API response: ${response.toString()}');
-      updateLoadingStatus(false, '');
+
+      /*final formData = FormData.fromMap({
+        'image_url':
+            'https://demos.neuramonks.com/img/cell-counting-demo-imgs/BloodImage_00168.jpg'
+      });*/
+
+      final response = await dio.post(baseURLCellCounting, data: formData);
+      CellCounting cellCounting = CellCounting.fromJson(response.data);
+      printI(
+          'API Response:\nRBC:${cellCounting.RBC},\nWBC:${cellCounting.WBC},\nPlatelets:${cellCounting.Platelets},\nimage_url:${cellCounting.image_url}');
+      _updateLoadingStatus(false, '');
+
+      setState(() {
+        _imageXFile = null;
+        gotResult = true;
+        _cellCounting = cellCounting;
+      });
     } catch (e) {
       printI('Error cell counting: $e');
-      updateLoadingStatus(false, 'Error cell counting: $e');
+      _updateLoadingStatus(false, 'Error cell counting: $e');
     }
   }
-
-  Future<void> _uploadImage3(File? imageFile) async {
-    try {
-      final dio = Dio();
-      final String uploadUrl = 'https://demos.neuramonks.com:8000/blood_cell';
-
-      FormData formData = FormData.fromMap({
-        'image_file': await MultipartFile.fromFile(
-          imageFile!.path,
-          filename: 'uploaded_image',
-        ),
-      });
-
-      final response = await dio.post(uploadUrl, data: formData);
-
-      if (response.statusCode == 200) {
-        printI('Image uploaded successfully!');
-      } else {
-        printI('Failed to upload image. Status code: ${response.statusCode}');
-      }
-    } catch (error) {
-      printI('Error uploading image: $error');
-    }
-  }
-
-/*  Future<String> uploadImage2(File file) async {
-    String fileName = file.path.split('/').last;
-    FormData formData = FormData.fromMap({
-      "image_file":
-      await MultipartFile.fromFile(file.path, filename:fileName),
-    });
-    printI('formData before API call: ${formData.fields.toString()}');
-    final response = await dio.post("https://demos.neuramonks.com:8000/blood_cell", data: formData);
-    return response.data['id'];
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -125,42 +102,39 @@ class _CellCountState extends State<CellCount> {
         title: const Text('Cell Counting'),
       ),
       body: Center(
-        child: isLoading
+        child: _isLoading
             ? const ProgressPart()
-            : _image == null
-                ? const Text('No image selected.')
-                : Column(
-                    children: [
-                      Image.file(File(_image!.path)),
-                      ElevatedButton(
-                        onPressed: () {
-                          _uploadImage();
-                          // uploadImage2(File(_image!.path));
-                          // _uploadImage3(_image);
-                        },
-                        child: Text('Upload selected image.'),
-                      ),
-                    ],
-                  ),
+            : _imageXFile != null
+                ? _LocalImageSelectedPart(
+                    imgFile: File(_imageXFile!.path),
+                    mOnPressed: () {
+                      _uploadImage();
+                    })
+                : gotResult
+                    ? _ImageResultPart(
+                        cellCounting: _cellCounting,
+                        mOnPressed: () {},
+                      )
+                    : const Text('No image selected.'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _getImage,
+        onPressed: _pickImage,
         tooltip: 'Pick Image',
         child: const Icon(Icons.add_a_photo),
       ),
     );
   }
 
-  Future _getImage() async {
+  Future _pickImage() async {
+    final ImagePicker picker = ImagePicker();
     try {
       final XFile? pickedFile =
-          await _picker.pickImage(source: ImageSource.gallery);
+          await picker.pickImage(source: ImageSource.gallery);
 
       if (pickedFile != null) {
         printI('selected image:${pickedFile.path}');
         setState(() {
-          _image = File(pickedFile.path);
-          printI('selected image:${_image?.path}');
+          _imageXFile = pickedFile;
         });
       } else {
         showSnackBottom('Image picker error!',
@@ -172,10 +146,60 @@ class _CellCountState extends State<CellCount> {
     }
   }
 
-  void updateLoadingStatus(loadingStatus, errorMessage) {
+  void _updateLoadingStatus(loadingStatus, errorMessage) {
     setState(() {
-      isLoading = loadingStatus;
-      errorMsg = errorMessage;
+      _isLoading = loadingStatus;
+      _errorMsg = errorMessage;
     });
+  }
+}
+
+class _LocalImageSelectedPart extends StatelessWidget {
+  const _LocalImageSelectedPart({
+    required this.imgFile,
+    required this.mOnPressed,
+  });
+
+  final File? imgFile;
+  final VoidCallback? mOnPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Image.file(imgFile!),
+        ElevatedButton(
+          onPressed: mOnPressed,
+          child: Text('Upload selected image.'),
+        )
+      ],
+    );
+  }
+}
+
+class _ImageResultPart extends StatelessWidget {
+  const _ImageResultPart({
+    required this.cellCounting,
+    required this.mOnPressed,
+  });
+
+  final CellCounting? cellCounting;
+  final VoidCallback? mOnPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    String imgUrl = cellCounting?.image_url ?? '';
+    int? RBC = cellCounting?.RBC;
+    int? WBC = cellCounting?.WBC;
+    int? Platelets = cellCounting?.Platelets;
+
+    return Column(
+      children: [
+        Image.network(imgUrl),
+        Text('RBC: $RBC'),
+        Text('WBC: $WBC'),
+        Text('Platelets: $Platelets'),
+      ],
+    );
   }
 }
