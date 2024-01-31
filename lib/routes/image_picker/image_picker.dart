@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_example/utilities/app_utils.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerDemo extends StatefulWidget {
@@ -35,10 +36,20 @@ class _ImagePickerDemoState extends State<ImagePickerDemo> {
   }
 
   Future getImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    try {
+      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
-    setState(() {
-      _image = image;
-    });
+      if (image != null) {
+        setState(() {
+          _image = image;
+        });
+      } else {
+        showSnackBottom('Image picker error!',
+            'Some issue occurred while capturing the image.');
+      }
+    } catch (e) {
+      showSnackBottom('Image picker error!',
+          'Some issue occurred while capturing the image.$e');
+    }
   }
 }
