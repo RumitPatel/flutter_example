@@ -52,7 +52,6 @@ class HomeRoute extends StatelessWidget {
 
 List<MainListItem> getMainMenuItems() {
   List<MainListItem> options = [
-    ListHeaderItem("Cell count demo", const CellCount()),
     ListHeaderItem("GetX Test", const GetXTest()),
     ListHeaderItem("Navigation Test", const EmptyPage()),
     ListHeaderItem("Login Page Test", const LoginRoute()),
@@ -68,6 +67,7 @@ List<MainListItem> getMainMenuItems() {
     ListHeaderItem("API call using Dio library", const ApiCallUsingDio()),
     ListMessageItem("Dio Post API example", const DioPostExample()),
     ListHeaderItem("Image Picker", const ImagePickerDemo()),
+    ListHeaderItem("Cell count demo", const CellCount()),
     ListHeaderItem("Logout", const LoginRoute()),
   ];
 
