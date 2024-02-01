@@ -6,6 +6,7 @@ import 'package:flutter_example/routes/api_call_using_http_library/model/cell_co
 import 'package:flutter_example/utilities/app_utils.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../utilities/constants.dart';
 import '../api_call_using_http_library/http_api_utils.dart';
 import '../api_call_using_http_library/ui/progress_part.dart';
 
@@ -17,10 +18,8 @@ class CellCount extends StatefulWidget {
 }
 
 class _CellCountState extends State<CellCount> {
+  PState pState = PState.initial;
   Dio dio = Dio();
-
-  bool _isLoading = false;
-  String _errorMsg = '';
 
   XFile? _imageXFile;
   CellCounting? _cellCounting;
@@ -37,7 +36,7 @@ class _CellCountState extends State<CellCount> {
       onRequest: (options, handler) {
         var fields = (options.data as FormData).fields;
         printI(
-            'Sending request to: ${options.uri}\nfieldsCount:${fields.length}\nfields:${fields}\nextra:${options.extra}\nqueryParameters:${options.queryParameters}');
+            'Sending request to: ${options.uri}\nfieldsCount:${fields.length}\nfields:$fields\nextra:${options.extra}\nqueryParameters:${options.queryParameters}');
         handler.next(options);
       },
       onResponse: (response, handler) {
@@ -59,7 +58,7 @@ class _CellCountState extends State<CellCount> {
   }
 
   void _uploadImage() async {
-    _updateLoadingStatus(true, '');
+    _updatePState(PState.progress);
     try {
       final formData = FormData.fromMap({
         'name': 'rum_test',
@@ -82,7 +81,7 @@ class _CellCountState extends State<CellCount> {
       CellCounting cellCounting = CellCounting.fromJson(response.data);
       printI(
           'API Response:\nRBC:${cellCounting.RBC},\nWBC:${cellCounting.WBC},\nPlatelets:${cellCounting.Platelets},\nimage_url:${cellCounting.image_url}');
-      _updateLoadingStatus(false, '');
+      _updatePState(PState.data);
 
       setState(() {
         _imageXFile = null;
@@ -91,7 +90,7 @@ class _CellCountState extends State<CellCount> {
       });
     } catch (e) {
       printI('Error cell counting: $e');
-      _updateLoadingStatus(false, 'Error cell counting: $e');
+      _updatePState(PState.error);
     }
   }
 
@@ -102,20 +101,7 @@ class _CellCountState extends State<CellCount> {
         title: const Text('Cell Counting'),
       ),
       body: Center(
-        child: _isLoading
-            ? const ProgressPart()
-            : _imageXFile != null
-                ? _LocalImageSelectedPart(
-                    imgFile: File(_imageXFile!.path),
-                    mOnPressed: () {
-                      _uploadImage();
-                    })
-                : gotResult
-                    ? _ImageResultPart(
-                        cellCounting: _cellCounting,
-                        mOnPressed: () {},
-                      )
-                    : const Text('No image selected.'),
+        child: getWidget(pState),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _pickImage,
@@ -123,6 +109,28 @@ class _CellCountState extends State<CellCount> {
         child: const Icon(Icons.add_a_photo),
       ),
     );
+  }
+
+  Widget getWidget(PState pState) {
+    switch (pState) {
+      case PState.initial:
+        return const Text('No image selected.');
+      case PState.progress:
+        return const ProgressPart();
+      case PState.data:
+        return _ImageResultPart(
+          cellCounting: _cellCounting,
+          mOnPressed: () {},
+        );
+      case PState.error:
+        return const Text('Some error occurred.');
+      case PState.imageSelectionDone:
+        return _LocalImageSelectedPart(
+            imgFile: File(_imageXFile!.path),
+            mOnPressed: () {
+              _uploadImage();
+            });
+    }
   }
 
   Future _pickImage() async {
@@ -135,6 +143,7 @@ class _CellCountState extends State<CellCount> {
         printI('selected image:${pickedFile.path}');
         setState(() {
           _imageXFile = pickedFile;
+          _updatePState(PState.imageSelectionDone);
         });
       } else {
         showSnackBottom('Image picker error!',
@@ -146,10 +155,9 @@ class _CellCountState extends State<CellCount> {
     }
   }
 
-  void _updateLoadingStatus(loadingStatus, errorMessage) {
+  void _updatePState(PState mPState) {
     setState(() {
-      _isLoading = loadingStatus;
-      _errorMsg = errorMessage;
+      pState = mPState;
     });
   }
 }
@@ -170,7 +178,7 @@ class _LocalImageSelectedPart extends StatelessWidget {
         Image.file(imgFile!),
         ElevatedButton(
           onPressed: mOnPressed,
-          child: Text('Upload selected image.'),
+          child: const Text('Upload selected image.'),
         )
       ],
     );
@@ -189,16 +197,16 @@ class _ImageResultPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String imgUrl = cellCounting?.image_url ?? '';
-    int? RBC = cellCounting?.RBC;
-    int? WBC = cellCounting?.WBC;
-    int? Platelets = cellCounting?.Platelets;
+    int? rbc = cellCounting?.RBC;
+    int? wbc = cellCounting?.WBC;
+    int? platelets = cellCounting?.Platelets;
 
     return Column(
       children: [
         Image.network(imgUrl),
-        Text('RBC: $RBC'),
-        Text('WBC: $WBC'),
-        Text('Platelets: $Platelets'),
+        Text('RBC: $rbc'),
+        Text('WBC: $wbc'),
+        Text('Platelets: $platelets'),
       ],
     );
   }
