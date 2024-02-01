@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../utilities/constants.dart';
 import '../api_call_using_http_library/http_api_utils.dart';
+import '../api_call_using_http_library/model/photo_info.dart';
 import '../api_call_using_http_library/ui/progress_part.dart';
 
 class CellCount extends StatefulWidget {
@@ -28,6 +29,49 @@ class _CellCountState extends State<CellCount> {
   void initState() {
     super.initState();
     setupInterceptors();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(cellCounting),
+      ),
+      body: _getWidget(_pState),
+      bottomSheet: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Text(cellCountingInfo1),
+      ),
+    );
+  }
+
+  Widget _getWidget(PState pState) {
+    switch (pState) {
+      case PState.initial:
+        return ImageSelectionPart(
+          onPickImagePressed: _pickImage,
+          onListImageSelected: (String imgUrl) {
+            _uploadImage(false, imgUrl);
+          },
+        );
+      case PState.progress:
+        return const ProgressPart();
+      case PState.data:
+        return _ImageResultPart(
+          cellCounting: _cellCounting,
+          onTryAgainPressed: () {
+            _updatePState(PState.initial);
+          },
+        );
+      case PState.error:
+        return const Text('Some error occurred.');
+      case PState.imageSelectionDone:
+        return _LocalImageSelectedPart(
+            imgFile: File(_imageXFile!.path),
+            mOnPressed: () {
+              _uploadImage(true, '');
+            });
+    }
   }
 
   void setupInterceptors() {
@@ -56,20 +100,27 @@ class _CellCountState extends State<CellCount> {
     );*/
   }
 
-  void _uploadImage() async {
+  void _uploadImage(bool isForImageFile, String? imgUrl) async {
     _updatePState(PState.progress);
+    FormData formData = FormData();
     try {
-      final formData = FormData.fromMap({
-        'name': 'rum_test',
-        'image_file': await MultipartFile.fromFile(
-          _imageXFile!.path,
-          filename: _imageXFile!.path,
-        ),
-        /*'files': [
+      if (isForImageFile) {
+        formData = FormData.fromMap({
+          'name': 'rum_test',
+          'image_file': await MultipartFile.fromFile(
+            _imageXFile!.path,
+            filename: _imageXFile!.path,
+          ),
+          /*'files': [
           await MultipartFile.fromFile('./text1.txt', filename: 'text1.txt'),
           await MultipartFile.fromFile('./text2.txt', filename: 'text2.txt'),
         ]*/
-      });
+        });
+      } else if (imgUrl!.isNotEmpty) {
+        formData = FormData.fromMap({
+          'image_url': imgUrl,
+        });
+      }
 
       /*final formData = FormData.fromMap({
         'image_url':
@@ -92,45 +143,6 @@ class _CellCountState extends State<CellCount> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cell Counting'),
-      ),
-      body: Center(
-        child: getWidget(_pState),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _pickImage,
-        tooltip: 'Pick Image',
-        child: const Icon(Icons.add_a_photo),
-      ),
-    );
-  }
-
-  Widget getWidget(PState pState) {
-    switch (pState) {
-      case PState.initial:
-        return const Text('No image selected.');
-      case PState.progress:
-        return const ProgressPart();
-      case PState.data:
-        return _ImageResultPart(
-          cellCounting: _cellCounting,
-          mOnPressed: () {},
-        );
-      case PState.error:
-        return const Text('Some error occurred.');
-      case PState.imageSelectionDone:
-        return _LocalImageSelectedPart(
-            imgFile: File(_imageXFile!.path),
-            mOnPressed: () {
-              _uploadImage();
-            });
-    }
-  }
-
   Future _pickImage() async {
     final ImagePicker picker = ImagePicker();
     try {
@@ -144,12 +156,10 @@ class _CellCountState extends State<CellCount> {
           _updatePState(PState.imageSelectionDone);
         });
       } else {
-        showSnackBottom('Image picker error!',
-            'Some issue occurred while capturing the image.');
+        showSnackBottom(imagePickerError, errorWhileCapture);
       }
     } catch (e) {
-      showSnackBottom('Image picker error!',
-          'Some issue occurred while capturing the image.$e');
+      showSnackBottom(imagePickerError, '$errorWhileCapture $e');
     }
   }
 
@@ -157,6 +167,62 @@ class _CellCountState extends State<CellCount> {
     setState(() {
       _pState = mPState;
     });
+  }
+}
+
+class ImageSelectionPart extends StatelessWidget {
+  const ImageSelectionPart({
+    super.key,
+    required this.onPickImagePressed,
+    required this.onListImageSelected,
+  });
+
+  final VoidCallback? onPickImagePressed;
+  final Function(String imgUrl) onListImageSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<PhotoInfo> photos = staticPhotos();
+
+    return Column(
+      children: [
+        Text(
+          cellCountingData1,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        Text(
+          cellCountingData2,
+          style: TextStyle(color: Colors.grey[500]),
+        ),
+        ElevatedButton(
+          onPressed: onPickImagePressed,
+          child: const Text(pickFromGallery),
+        ),
+        const Text(cellCountingData3),
+        Expanded(
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            itemCount: photos.length,
+            itemBuilder: (context, index) {
+              String? imgUrl = photos[index].url ?? '';
+              return InkWell(
+                onTap: () {
+                  onListImageSelected(imgUrl);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    child: Image.network(imgUrl ?? ''),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -186,11 +252,11 @@ class _LocalImageSelectedPart extends StatelessWidget {
 class _ImageResultPart extends StatelessWidget {
   const _ImageResultPart({
     required this.cellCounting,
-    required this.mOnPressed,
+    required this.onTryAgainPressed,
   });
 
   final CellCounting? cellCounting;
-  final VoidCallback? mOnPressed;
+  final VoidCallback? onTryAgainPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -205,6 +271,10 @@ class _ImageResultPart extends StatelessWidget {
         Text('RBC: $rbc'),
         Text('WBC: $wbc'),
         Text('Platelets: $platelets'),
+        ElevatedButton(
+          onPressed: onTryAgainPressed,
+          child: const Text(tryAgain),
+        ),
       ],
     );
   }
