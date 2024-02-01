@@ -18,12 +18,11 @@ class CellCount extends StatefulWidget {
 }
 
 class _CellCountState extends State<CellCount> {
-  PState pState = PState.initial;
   Dio dio = Dio();
 
+  PState _pState = PState.initial;
   XFile? _imageXFile;
   CellCounting? _cellCounting;
-  bool gotResult = false;
 
   @override
   void initState() {
@@ -85,7 +84,6 @@ class _CellCountState extends State<CellCount> {
 
       setState(() {
         _imageXFile = null;
-        gotResult = true;
         _cellCounting = cellCounting;
       });
     } catch (e) {
@@ -101,7 +99,7 @@ class _CellCountState extends State<CellCount> {
         title: const Text('Cell Counting'),
       ),
       body: Center(
-        child: getWidget(pState),
+        child: getWidget(_pState),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _pickImage,
@@ -157,7 +155,7 @@ class _CellCountState extends State<CellCount> {
 
   void _updatePState(PState mPState) {
     setState(() {
-      pState = mPState;
+      _pState = mPState;
     });
   }
 }
