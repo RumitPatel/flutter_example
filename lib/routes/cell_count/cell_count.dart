@@ -7,6 +7,7 @@ import 'package:flutter_example/utilities/app_utils.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../utilities/constants.dart';
+import '../../utilities/theme_utils.dart';
 import '../api_call_using_http_library/http_api_utils.dart';
 import '../api_call_using_http_library/model/photo_info.dart';
 import '../api_call_using_http_library/ui/progress_part.dart';
@@ -37,9 +38,12 @@ class _CellCountState extends State<CellCount> {
       appBar: AppBar(
         title: const Text(cellCounting),
       ),
-      body: _getWidget(_pState),
-      bottomSheet: Padding(
+      body: Padding(
         padding: const EdgeInsets.all(18.0),
+        child: _getWidget(_pState),
+      ),
+      bottomSheet: const Padding(
+        padding: EdgeInsets.all(18.0),
         child: Text(cellCountingInfo1),
       ),
     );
@@ -186,23 +190,32 @@ class ImageSelectionPart extends StatelessWidget {
 
     return Column(
       children: [
-        Text(
+        const Text(
           cellCountingData1,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: myTextStyleBold,
         ),
-        Text(
-          cellCountingData2,
-          style: TextStyle(color: Colors.grey[500]),
+        const SizedBox(height: lineSpaceInto2),
+        Text(cellCountingData2,
+            style: TextStyle(
+              color: Colors.grey[600],
+              fontSize: 18,
+            ),
+            textAlign: TextAlign.center),
+        const SizedBox(height: lineSpaceInto2),
+        MyButton1(
+          text: pickFromGallery,
+          onPickImagePressed: onPickImagePressed,
         ),
-        ElevatedButton(
-          onPressed: onPickImagePressed,
-          child: const Text(pickFromGallery),
+        const SizedBox(height: lineSpaceInto4),
+        const Text(
+          cellCountingData3,
+          style: myTextStyleBold,
         ),
-        const Text(cellCountingData3),
+        const SizedBox(height: lineSpace),
         Expanded(
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+              crossAxisCount: 3,
             ),
             itemCount: photos.length,
             itemBuilder: (context, index) {
@@ -213,8 +226,12 @@ class ImageSelectionPart extends StatelessWidget {
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Card(
-                    child: Image.network(imgUrl ?? ''),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.0),
+                    child: Image.network(
+                      imgUrl,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               );
@@ -239,10 +256,17 @@ class _LocalImageSelectedPart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.file(imgFile!),
-        ElevatedButton(
-          onPressed: mOnPressed,
-          child: const Text('Upload selected image.'),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12.0),
+          child: Image.file(
+            imgFile!,
+            fit: BoxFit.fill,
+          ),
+        ),
+        const SizedBox(height: lineSpaceInto2),
+        MyButton1(
+          text: uploadSelectedImage,
+          onPickImagePressed: mOnPressed,
         )
       ],
     );
@@ -267,15 +291,58 @@ class _ImageResultPart extends StatelessWidget {
 
     return Column(
       children: [
-        Image.network(imgUrl),
-        Text('RBC: $rbc'),
-        Text('WBC: $wbc'),
-        Text('Platelets: $platelets'),
-        ElevatedButton(
-          onPressed: onTryAgainPressed,
-          child: const Text(tryAgain),
+        const Text(resultIsHere, style: tsResultPage),
+        const SizedBox(height: lineSpaceInto2),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12.0),
+          child: Image.network(
+            imgUrl,
+            fit: BoxFit.fill,
+          ),
+        ),
+        const SizedBox(height: lineSpaceInto2),
+        Text('RBC: $rbc', style: tsResultPage),
+        Text('WBC: $wbc', style: tsResultPage),
+        Text('Platelets: $platelets', style: tsResultPage),
+        const SizedBox(height: lineSpaceInto2),
+        MyButton1(
+          text: letsTryAgain,
+          onPickImagePressed: onTryAgainPressed,
         ),
       ],
+    );
+  }
+}
+
+class MyButton1 extends StatelessWidget {
+  const MyButton1({
+    super.key,
+    required String? text,
+    required void Function()? onPickImagePressed,
+  })  : _onPickImagePressed = onPickImagePressed,
+        _text = text;
+
+  final String? _text;
+  final VoidCallback? _onPickImagePressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.blueAccent,
+      child: InkWell(
+        onTap: _onPickImagePressed,
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Text(
+            _text!,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

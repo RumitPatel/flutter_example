@@ -5,6 +5,10 @@ const String appName = "Rum Flutter Sample App";
 const double textSizeNormal = 18;
 const double inputRadios = 15;
 const double inputContentPadding = 20;
+const double lineSpace = 12;
+const double lineSpaceInto2 = (lineSpace * 2);
+const double lineSpaceInto3 = (lineSpace * 3);
+const double lineSpaceInto4 = (lineSpace * 4);
 
 const String loginFormTitle = "Login form";
 const String lblEmailPlaceholder = "Enter your email address";
@@ -34,15 +38,17 @@ enum PState {
 const String cellCounting = 'Cell Counting';
 const String cellCountingData1 = 'Try it out - Cell Counting Demo!';
 const String cellCountingData2 =
-    'Upload an image for AI model analysis to quantity cell count., Switzerland';
-const String cellCountingData3 = 'No image? one of these:';
+    'Upload an image for AI model analysis to quantity cell count.';
+const String cellCountingData3 = 'No image? Try one of these:';
 const String cellCountingInfo1 =
     'Note: We have utilized publicly available data,\n so please be aware that results may vary accordingly';
-const String tryAgain = 'Try Again.';
+const String letsTryAgain = 'Let\'s Try Again';
 const String pickFromGallery = 'Pick Image From Gallery';
 const String imagePickerError = 'Image picker error!';
 const String errorWhileCapture =
     'Some issue occurred while capturing the image.';
+const String uploadSelectedImage = 'Upload selected image.';
+const String resultIsHere = 'Hurray!, The result is here!';
 
 List<PhotoInfo> staticPhotos() {
   return [
