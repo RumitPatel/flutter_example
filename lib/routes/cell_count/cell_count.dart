@@ -187,7 +187,6 @@ class ImageSelectionPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<PhotoInfo> photos = staticPhotos();
-
     return Column(
       children: [
         const Text(
