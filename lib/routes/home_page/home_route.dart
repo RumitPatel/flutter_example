@@ -30,6 +30,7 @@ class HomeRoute extends StatelessWidget {
                       hintText: 'Search content',
                       border: InputBorder.none,
                     ),
+                    textCapitalization: TextCapitalization.sentences,
                     onChanged: c.onSearchTextChanged,
                   ),
                   trailing: c.queryController.value.text.isNotEmpty
