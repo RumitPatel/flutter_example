@@ -19,7 +19,7 @@ import 'lists/sliver_list_route.dart';
 import 'login_route.dart';
 
 class HomeController extends GetxController {
-  List<MainListItem> options = [
+  final List<MainListItem> options = [
     ListHeaderItem("GetX Test", const GetXTest()),
     ListHeaderItem("Navigation Test", const EmptyPage()),
     ListHeaderItem("Login Page Test", const LoginRoute()),
@@ -38,7 +38,7 @@ class HomeController extends GetxController {
     ListHeaderItem("Logout", const LoginRoute()),
   ].obs;
 
-  List<MainListItem> searchedOptions = <MainListItem>[].obs;
+  final List<MainListItem> searchedOptions = <MainListItem>[].obs;
 
   final queryController = TextEditingController().obs;
 
@@ -52,5 +52,18 @@ class HomeController extends GetxController {
 
   clearQueryController() {
     queryController.value.clear();
+  }
+
+  onSearchTextChanged(String text) async {
+    searchedOptions.clear();
+    if (text.isEmpty) {
+      return;
+    }
+
+    for (var option in options) {
+      if (option.getTitle()!.toLowerCase().contains(text.toLowerCase())) {
+        searchedOptions.add(option);
+      }
+    }
   }
 }

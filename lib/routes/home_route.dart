@@ -30,14 +30,14 @@ class HomeRoute extends StatelessWidget {
                       hintText: 'Search content',
                       border: InputBorder.none,
                     ),
-                    onChanged: _onSearchTextChanged,
+                    onChanged: c.onSearchTextChanged,
                   ),
                   trailing: c.queryController.value.text.isNotEmpty
                       ? IconButton(
                           icon: const Icon(Icons.cancel),
                           onPressed: () {
                             c.clearQueryController();
-                            _onSearchTextChanged('');
+                            c.onSearchTextChanged('');
                           },
                         )
                       : const SizedBox(),
@@ -61,22 +61,5 @@ class HomeRoute extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  _onSearchTextChanged(String text) async {
-    final HomeController c = Get.find();
-    c.searchedOptions.clear();
-    if (text.isEmpty) {
-      return;
-    }
-    printI('text:$text');
-
-    for (var option in c.options) {
-      if (option.getTitle()!.toLowerCase().contains(text.toLowerCase())) {
-        c.searchedOptions.add(option);
-      }
-    }
-
-    printI('searchedOptions:${c.searchedOptions.length}');
   }
 }
