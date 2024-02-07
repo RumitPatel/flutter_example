@@ -1,8 +1,8 @@
-import 'package:android_flutter_examle/utilities/app_utils.dart';
+import 'package:flutter_example/utilities/app_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
-import 'home_route.dart';
+import 'home_page/home_route.dart';
 
 class LoginRoute extends StatefulWidget {
   const LoginRoute({super.key});

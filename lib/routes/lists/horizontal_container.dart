@@ -1,4 +1,4 @@
-import 'package:android_flutter_examle/routes/lists/custom_horizontal_container.dart';
+import 'package:flutter_example/routes/lists/custom_horizontal_container.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalContainer extends StatelessWidget {

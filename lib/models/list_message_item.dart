@@ -35,4 +35,9 @@ class ListMessageItem implements MainListItem {
       ],
     );
   }
+
+  @override
+  String? getTitle() {
+    return title;
+  }
 }

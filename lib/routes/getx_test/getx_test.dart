@@ -1,18 +1,17 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_example/routes/getx_test/controllers/my_controller.dart';
+import 'package:flutter_example/routes/getx_test/state_test_with_tasks.dart';
+import 'package:get/get.dart';
 
-import '../main.dart';
-import 'test_login_page_route.dart';
-
-class WordPairRoute extends StatefulWidget {
-  const WordPairRoute({super.key});
+class GetXTest extends StatefulWidget {
+  const GetXTest({super.key});
 
   @override
-  State<WordPairRoute> createState() => _WordPairRouteState();
+  State<GetXTest> createState() => _GetXTestState();
 }
 
-class _WordPairRouteState extends State<WordPairRoute> {
+class _GetXTestState extends State<GetXTest> {
   var selectedIndex = 0;
 
   @override
@@ -26,7 +25,7 @@ class _WordPairRouteState extends State<WordPairRoute> {
         page = const FavoritesPage();
         break;
       case 2:
-        page = const TestLoginPageRoute();
+        page = const StateTestWithTasks();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -35,7 +34,8 @@ class _WordPairRouteState extends State<WordPairRoute> {
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Word Pair Page'),
+          title: const Text('GetX Test'),
+          leading: BackButton(onPressed: _onBackPressed),
         ),
         body: Row(
           children: [
@@ -52,8 +52,8 @@ class _WordPairRouteState extends State<WordPairRoute> {
                     label: Text('Favorites'),
                   ),
                   NavigationRailDestination(
-                    icon: Icon(Icons.login),
-                    label: Text('Login Page'),
+                    icon: Icon(Icons.checklist),
+                    label: Text('State Test with Tasks'),
                   ),
                 ],
                 selectedIndex: selectedIndex,
@@ -75,6 +75,11 @@ class _WordPairRouteState extends State<WordPairRoute> {
       );
     });
   }
+
+  void _onBackPressed() {
+    Get.delete<MyController>();
+    Navigator.maybePop(context);
+  }
 }
 
 class FavoritesPage extends StatelessWidget {
@@ -84,32 +89,33 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    var favourites = appState.favourites;
+    var c = Get.put(MyController());
 
-    if (favourites.isEmpty) {
+    if (c.favourites.isEmpty) {
       return const Center(
         child: Text('No Favourite found!!!'),
       );
     }
 
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: Text('You have ${appState.favourites.length} favorite'),
-        ),
-        for (var pair in favourites)
-          ListTile(
-            leading: IconButton(
-              icon: const Icon(Icons.delete_outline, semanticLabel: 'Delete'),
-              onPressed: () {
-                appState.removeFavorite(pair);
-              },
-            ),
-            title: Text(pair.asPascalCase),
+    return Obx(
+      () => ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text('You have ${c.favourites.length} favorite'),
           ),
-      ],
+          for (var pair in c.favourites)
+            ListTile(
+              leading: IconButton(
+                icon: const Icon(Icons.delete_outline, semanticLabel: 'Delete'),
+                onPressed: () {
+                  c.removeFavorite(pair);
+                },
+              ),
+              title: Text(pair.asPascalCase),
+            ),
+        ],
+      ),
     );
   }
 }
@@ -119,15 +125,7 @@ class GeneratorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    var pair = appState.current;
-
-    IconData icon;
-    if (appState.favourites.contains(pair)) {
-      icon = Icons.favorite;
-    } else {
-      icon = Icons.favorite_border;
-    }
+    var c = Get.put(MyController());
 
     return Center(
       child: Column(
@@ -137,28 +135,32 @@ class GeneratorPage extends StatelessWidget {
             flex: 3,
             child: HistoryListView(),
           ),
-          const SizedBox(height: 10),
-          BigCard(pair: pair),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ElevatedButton.icon(
-                onPressed: () {
-                  appState.toggleFavorite();
-                },
-                icon: Icon(icon),
-                label: Text('Like'),
-              ),
-              SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: () {
-                  appState.getNext();
-                },
-                child: Text('Next'),
-              ),
-            ],
-          ),
+          Obx(() => Column(
+                children: [
+                  const SizedBox(height: 10),
+                  BigCard(pair: c.current.value),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          c.toggleFavorite();
+                        },
+                        icon: Icon(c.getFavouriteIcon()),
+                        label: Text('Like'),
+                      ),
+                      SizedBox(width: 10),
+                      ElevatedButton(
+                        onPressed: () {
+                          c.getNext();
+                        },
+                        child: Text('Next'),
+                      ),
+                    ],
+                  ),
+                ],
+              )),
           Spacer(flex: 2),
         ],
       ),
@@ -217,8 +219,8 @@ class _HistoryListViewState extends State<HistoryListView> {
 
   @override
   Widget build(BuildContext context) {
-    final appState = context.watch<MyAppState>();
-    appState.historyListKey = _key;
+    var c = Get.put(MyController());
+    c.historyListKey = _key;
 
     return ShaderMask(
       shaderCallback: (bounds) => _maskingGradient.createShader(bounds),
@@ -229,22 +231,24 @@ class _HistoryListViewState extends State<HistoryListView> {
         key: _key,
         reverse: true,
         padding: EdgeInsets.only(top: 100),
-        initialItemCount: appState.history.length,
+        initialItemCount: c.history.length,
         itemBuilder: (context, index, animation) {
-          final pair = appState.history[index];
+          final pair = c.history[index];
           return SizeTransition(
             sizeFactor: animation,
             child: Center(
-              child: TextButton.icon(
-                onPressed: () {
-                  appState.toggleFavorite(pair);
-                },
-                icon: appState.favourites.contains(pair)
-                    ? const Icon(Icons.favorite, size: 12)
-                    : const SizedBox(),
-                label: Text(
-                  pair.asLowerCase,
-                  semanticsLabel: pair.asPascalCase,
+              child: Obx(
+                () => TextButton.icon(
+                  onPressed: () {
+                    c.toggleFavorite(pair);
+                  },
+                  icon: c.favourites.contains(pair)
+                      ? const Icon(Icons.favorite, size: 12)
+                      : const SizedBox(),
+                  label: Text(
+                    pair.asLowerCase,
+                    semanticsLabel: pair.asPascalCase,
+                  ),
                 ),
               ),
             ),

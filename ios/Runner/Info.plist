@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>android_flutter_examle</string>
+	<string>flutter_example</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -47,5 +47,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Example Flutter app needs access to your photo library to pick images.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Example Flutter app needs access to your camera to capture new images.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Example Flutter app needs access to your microphone to record videos.</string>
 </dict>
 </plist>
