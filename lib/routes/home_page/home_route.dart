@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_example/routes/home_controller.dart';
+import 'package:flutter_example/routes/home_page/home_controller.dart';
 import 'package:flutter_example/utilities/app_utils.dart';
 import 'package:get/get.dart';
 
-import '../utilities/constants.dart';
+import '../../utilities/constants.dart';
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({super.key});

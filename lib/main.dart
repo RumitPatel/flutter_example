@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_example/routes/home_route.dart';
+import 'package:flutter_example/routes/home_page/home_route.dart';
 import 'package:flutter_example/utilities/constants.dart';
 import 'package:get/get.dart';
 
