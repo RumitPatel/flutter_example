@@ -1,75 +1,82 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_example/routes/api_call_using_dio_library/api_call_using_dio_library.dart';
-import 'package:flutter_example/routes/cell_count/cell_count.dart';
-import 'package:flutter_example/routes/empty_page.dart';
-import 'package:flutter_example/routes/flutter_layout_demo/flutter_layout_demo.dart';
-import 'package:flutter_example/routes/getx_test/getx_test.dart';
-import 'package:flutter_example/routes/lists/listview_example_route.dart';
+import 'package:flutter_example/routes/home_controller.dart';
 import 'package:flutter_example/utilities/app_utils.dart';
+import 'package:get/get.dart';
 
-import '../models/list_header_item.dart';
-import '../models/list_message_item.dart';
-import '../models/main_list_item.dart';
 import '../utilities/constants.dart';
-import 'api_call_using_dio_library/dio_post_example.dart';
-import 'api_call_using_http_library/api_call_using_http_library.dart';
-import 'bottom_navigation_bar_tab/bottom_navigation_bar_tab.dart';
-import 'image_picker/image_picker.dart';
-import 'lists/horizontal_container.dart';
-import 'lists/singlechild_scrollview_route.dart';
-import 'lists/sliver_list_route.dart';
-import 'login_route.dart';
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<MainListItem> items = getMainMenuItems();
+    HomeController c = Get.put(HomeController());
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(homeScreenTitle),
       ),
-      body: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          final item = items[index];
-          return InkWell(
-              onTap: () {
-                navigateTo(context, item.getWidgetToNavigate(context));
-              },
-              child: item.getItemWidget(context));
-        },
+      body: Obx(
+        () => Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                child: ListTile(
+                  leading: const Icon(Icons.search),
+                  title: TextField(
+                    controller: c.queryController.value,
+                    decoration: const InputDecoration(
+                      hintText: 'Search content',
+                      border: InputBorder.none,
+                    ),
+                    onChanged: _onSearchTextChanged,
+                  ),
+                  trailing: c.queryController.value.text.isNotEmpty
+                      ? IconButton(
+                          icon: const Icon(Icons.cancel),
+                          onPressed: () {
+                            c.clearQueryController();
+                            _onSearchTextChanged('');
+                          },
+                        )
+                      : const SizedBox(),
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: c.getCurrentOptions().length,
+                itemBuilder: (context, index) {
+                  final item = c.getCurrentOptions()[index];
+                  return InkWell(
+                      onTap: () {
+                        navigateTo(context, item.getWidgetToNavigate(context));
+                      },
+                      child: item.getItemWidget(context));
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  void myFunctionToPass() {
-    printI('Function passed to the constructor is executed!');
+  _onSearchTextChanged(String text) async {
+    final HomeController c = Get.find();
+    c.searchedOptions.clear();
+    if (text.isEmpty) {
+      return;
+    }
+    printI('text:$text');
+
+    for (var option in c.options) {
+      if (option.getTitle()!.toLowerCase().contains(text.toLowerCase())) {
+        c.searchedOptions.add(option);
+      }
+    }
+
+    printI('searchedOptions:${c.searchedOptions.length}');
   }
-}
-
-List<MainListItem> getMainMenuItems() {
-  List<MainListItem> options = [
-    ListHeaderItem("GetX Test", const GetXTest()),
-    ListHeaderItem("Navigation Test", const EmptyPage()),
-    ListHeaderItem("Login Page Test", const LoginRoute()),
-    ListHeaderItem("Bottom navigation tab", const BottomNavigationBarTab()),
-    ListHeaderItem("List Examples", const EmptyPage()),
-    ListMessageItem(
-        "SingleChildScrollView", const SingleChildScrollViewRoute()),
-    ListMessageItem("ListView", const ListViewExampleRoute()),
-    ListMessageItem("HorizontalListView", const HorizontalContainer()),
-    ListMessageItem("SliverList", const SliverListRoute()),
-    ListHeaderItem("Flutter layout demo", const FlutterLayoutDemo()),
-    ListHeaderItem("API call using Http library", const ApiCallUsingHttp()),
-    ListHeaderItem("API call using Dio library", const ApiCallUsingDio()),
-    ListMessageItem("Dio Post API example", const DioPostExample()),
-    ListHeaderItem("Image Picker", const ImagePickerDemo()),
-    ListHeaderItem("Cell count demo", const CellCount()),
-    ListHeaderItem("Logout", const LoginRoute()),
-  ];
-
-  return options;
 }
